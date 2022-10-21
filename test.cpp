@@ -190,12 +190,136 @@
 // 	return (0);
 // }
 
-int main()
+void ft_test()
 {
-	ft::vector<int> a(3, 100);
+	// ft::vector<int> a(3);
+	// ft::vector<int>::iterator _iter = a.begin();
+	// std::cout << *_iter << std::endl;
+	// std::cout << a.capacity() << std::endl;
+	// std::cout << a.size() << std::endl;
+	// std::cout << a[0] << std::endl;
+	// a.reserve(50);
+	// a.push_back(1);
+	// a.push_back(2);
+	// a.push_back(3);
+	// 	std::cout << *_iter << std::endl;
+	// std::cout << a.capacity() << std::endl;
+	// std::cout << a.size() << std::endl;
+	// std::cout << a[0] << std::endl;
+
+	ft::vector<int> a(10);
+	// a.push_back(1);
+	// a.push_back(2);
+	// a.push_back(3);
+	// a.push_back(4);
+	a[0] = 1;
+	a[1] = 2;
+	a[2] = 3;
+	a[3] = 4;
+	// for (int i = 0; i < 500; i++)
+	// 	a.push_back(1);
+
+	// a.at(3) = 3;
 	ft::vector<int>::iterator _iter = a.begin();
-	std::cout << *_iter << std::endl;
+	ft::iterator_traits<std::vector<int>::iterator>::value_type;
+	// ft::reverse_iterator<std::vector<int>::iterator> my_rit(a.end()), my_rit1(a.end() - 1);
+	std::cout << _iter[0] << std::endl;
+	std::cout << _iter[1] << std::endl;
+	std::cout << _iter[2] << std::endl;
+	std::cout << _iter[3] << std::endl;
+	std::cout << _iter[4] << std::endl;
+	std::cout << _iter[5] << std::endl;
+	std::cout << _iter[6] << std::endl;
 	std::cout << a.capacity() << std::endl;
 	std::cout << a.size() << std::endl;
-	std::cout << a[0] << std::endl;
+	// std::cout << *a.begin() << std::endl;
+	// std::cout << *a.end() << std::endl;
+	ft::vector<int> a2;
+	// for (int i = 0; i < 500; i++)
+	// 	a2.push_back(1);
+	a2.push_back(1);
+	a2.push_back(2);
+	a2.push_back(3);
+	a2.push_back(4);
+	ft::vector<int>::iterator _iter2 = a2.begin();
+	std::cout << _iter2[0] << std::endl;
+	std::cout << _iter2[1] << std::endl;
+	std::cout << _iter2[2] << std::endl;
+	std::cout << a2.capacity() << std::endl;
+	std::cout << a2.size() << std::endl;
+	// std::cout << *a2.begin() << std::endl;
+	// std::cout << *a2.end() << std::endl;
+	ft::vector<int> my_v(3, 4);
+	ft::vector<int> v4(a2.begin(), a2.end());
+	ft::vector<int>::iterator _iter4 = v4.begin();
+	std::cout << _iter4[0] << std::endl;
+	std::cout << _iter4[1] << std::endl;
+	std::cout << _iter4[2] << std::endl;
+	std::cout << v4.capacity() << std::endl;
+	std::cout << v4.size() << std::endl;
+	std::cout << std::__has_iterator_typedefs<std::vector<int>::iterator>::value << std::endl;
+	std::cout << std::__has_iterator_typedefs<ft::vector<int>::iterator>::value << std::endl;
+	ft::vector<char> v5;
+	v5.push_back('a');
+	v5.push_back('b');
+	v5.push_back('c');
+	std::cout << v4.capacity() << std::endl;
+	std::cout << v4.size() << std::endl;
 }
+
+int main()
+{
+	ft_test();
+	system("leaks a.out");
+	return (0);
+}
+// template <class Tp>
+// struct NAlloc {
+//     typedef Tp value_type;
+//     NAlloc() = default;
+//     template <class T> NAlloc(const NAlloc<T>&) {}
+ 
+//     Tp* allocate(std::size_t n)
+//     {
+//         n *= sizeof(Tp);
+//         Tp* p = static_cast<Tp*>(::operator new(n));
+//         std::cout << "allocating " << n << " bytes @ " << p << '\n';
+//         return p;
+//     }
+ 
+//     void deallocate(Tp* p, std::size_t n)
+//     {
+//         std::cout << "deallocating " << n*sizeof*p << " bytes @ " << p << "\n\n";
+//         ::operator delete(p);
+//     }
+// };
+// template <class T, class U>
+// bool operator==(const NAlloc<T>&, const NAlloc<U>&) { return true; }
+// template <class T, class U>
+// bool operator!=(const NAlloc<T>&, const NAlloc<U>&) { return false; }
+ 
+// int main()
+// {
+//     constexpr int max_elements = 32;
+ 
+//     std::cout << "using reserve: \n";
+//     {
+//         ft::vector<int> v1;
+//         v1.reserve( max_elements ); // reserves at least max_elements * sizeof(int) bytes
+ 
+//         for(int n = 0; n < max_elements; ++n)
+//             ;
+//     }
+ 
+//     std::cout << "not using reserve: \n";
+//     {
+//         std::vector<int, NAlloc<int> > v1;
+ 
+//         for(int n = 0; n < max_elements; ++n) {
+//             if(v1.size() == v1.capacity()) {
+//                 std::cout << "size() == capacity() == " << v1.size() << '\n';
+//             }
+//             v1.push_back(n);
+//         }
+//     }
+// }
