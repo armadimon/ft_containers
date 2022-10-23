@@ -164,7 +164,7 @@ class vector {
     	typedef ft::reverse_iterator<iterator>          reverse_iterator;
     	typedef ft::reverse_iterator<const_iterator>    const_reverse_iterator;
 
-	//constructor
+	// Member functions
 
 	explicit vector (const allocator_type& _alloc = allocator_type())
 	:
@@ -220,73 +220,7 @@ class vector {
 			_a.deallocate(_begin, _end_cap - _begin);
 		}
 	}
-	iterator begin() NOEXCEPT { return (this->_begin); };
-
-	const_iterator begin() const { return (_begin); }
-
-	iterator end() { return this->_end; }
-
-  	const_iterator end() const { return this->_end; }
-
-	reverse_iterator rbegin() { return reverse_iterator(end()); }
-
-	const_reverse_iterator rbegin() const {
-		return const_reverse_iterator(end());
-	}
-	reverse_iterator rend() { return reverse_iterator(begin()); }
-
-	const_reverse_iterator rend() const {
-		return const_reverse_iterator(begin());
-	}
-
-    bool empty() const NOEXCEPT {return this->_begin == this->_end;}
-
-	size_type	size() const NOEXCEPT
-		{return static_cast<size_type>(this->_end - this->_begin);}
-
-    size_type capacity() const NOEXCEPT
-        {return static_cast<size_type>(this->_end_cap - this->_begin);}
 	
-	size_type max_size() const {
-    	return std::min(
-		this->_a.max_size(),
-        static_cast<size_type>(std::numeric_limits<difference_type>::max()));}
-
-	void	reserve(size_type new_cap) {
-		if (new_cap > max_size())
-			throw std::length_error("vector");
-		if (new_cap > capacity()) {
-			pointer		tmp_begin = _begin;
-			pointer		tmp_end = _end;
-			pointer		tmp_end_cap = _end_cap;
-			pointer		tmp_begin2 = _begin;
-			
-			// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
-			_begin = _a.allocate(new_cap);
-			_end_cap = _begin + new_cap;
-			_end = _begin;
-			while (tmp_begin != tmp_end) {
-				_a.construct(_end, *tmp_begin);
-				_end++;
-				tmp_begin++;
-			}
-			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
-		}
-	}
-
-	template <typename T>
-	void push_back( const T& value)
-	{
-		if (size() + 1 > capacity()) {
-			if (capacity() == 0)
-				reserve(capacity() + 1);
-			else
-				reserve(capacity() * 2);
-		}
-		_a.construct(_end, value);
-		_end++;
-	}
-
 	template <typename InputIt>
 	void assign(InputIt first, InputIt last,
 		typename ft::enable_if<ft::is_input_iterator<InputIt>::value,
@@ -329,10 +263,63 @@ class vector {
 			}
 	}
 
-	// template <typename T>
-	// void assign( size_type count, const T& value ) {
+	// Iterators
+	iterator begin() NOEXCEPT { return (this->_begin); };
 
-	// }
+	const_iterator begin() const { return (_begin); }
+
+	iterator end() { return this->_end; }
+
+  	const_iterator end() const { return this->_end; }
+
+	reverse_iterator rbegin() { return reverse_iterator(end()); }
+
+	const_reverse_iterator rbegin() const {
+		return const_reverse_iterator(end());
+	}
+	reverse_iterator rend() { return reverse_iterator(begin()); }
+
+	const_reverse_iterator rend() const {
+		return const_reverse_iterator(begin());
+	}
+
+	// Capacity
+
+    bool empty() const NOEXCEPT {return this->_begin == this->_end;}
+
+	size_type	size() const NOEXCEPT
+		{return static_cast<size_type>(this->_end - this->_begin);}
+
+    size_type capacity() const NOEXCEPT
+        {return static_cast<size_type>(this->_end_cap - this->_begin);}
+	
+	size_type max_size() const {
+    	return std::min(
+		this->_a.max_size(),
+        static_cast<size_type>(std::numeric_limits<difference_type>::max()));}
+
+	void	reserve(size_type new_cap) {
+		if (new_cap > max_size())
+			throw std::length_error("vector");
+		if (new_cap > capacity()) {
+			pointer		tmp_begin = _begin;
+			pointer		tmp_end = _end;
+			pointer		tmp_end_cap = _end_cap;
+			pointer		tmp_begin2 = _begin;
+			
+			// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
+			_begin = _a.allocate(new_cap);
+			_end_cap = _begin + new_cap;
+			_end = _begin;
+			while (tmp_begin != tmp_end) {
+				_a.construct(_end, *tmp_begin);
+				_end++;
+				tmp_begin++;
+			}
+			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+		}
+	}
+
 
 	// element access
 
@@ -342,6 +329,7 @@ class vector {
         	throw std::out_of_range("vector");
 		return (this->_begin[pos]);
 	}
+
 	const_reference at( size_type pos ) const
 	{
 		if (pos >= size())
@@ -354,21 +342,28 @@ class vector {
         _LIBCPP_ASSERT(!empty(), "front() called for empty vector");
         return *this->_begin;
     }
-    const_reference front() const NOEXCEPT
+    
+	const_reference front() const NOEXCEPT
     {
         _LIBCPP_ASSERT(!empty(), "front() called for empty vector");
         return *this->_begin;
     }
-    reference       back() NOEXCEPT
+    
+	reference       back() NOEXCEPT
     {
         _LIBCPP_ASSERT(!empty(), "back() called for empty vector");
         return *(this->__end_ - 1);
     }
-    const_reference back()  const NOEXCEPT
+    
+	const_reference back()  const NOEXCEPT
     {
         _LIBCPP_ASSERT(!empty(), "back() called for empty vector");
         return *(this->__end_ - 1);
     }
+
+	reference operator[](size_type _n) NOEXCEPT {
+		return (this->_begin[_n]);
+	}
 
     // value_type*       data() NOEXCEPT
     //     {return (this->_begin);}
@@ -376,17 +371,246 @@ class vector {
     // const value_type* data() const NOEXCEPT
     //     {return (this->_begin);}
 
-	reference operator[](size_type _n) NOEXCEPT {
-		return (this->_begin[_n]);
+	// Modifiers
+
+	iterator insert( const_iterator __position, const _T& __X )
+	{
+		pointer __p = this->_begin + (__position - begin());
+		if (this->_end < this->_end_cap)
+		{
+			if (__p == this->_end) {
+				_a.construct(_end, __X);
+				_end++;
+			}
+			else {
+				pointer __i = this->_end;
+				for (; __i >= this->_begin; --__i) {
+					this->_a.construct(__i, *(__i - 1));
+				}
+				_a.construct(__p, __X);
+				_end++;
+			}
+		}
+		else
+		{
+			pointer		tmp_begin = _begin;
+			pointer		tmp_end = _end;
+			pointer		tmp_end_cap = _end_cap;
+			pointer		tmp_begin2 = _begin;
+			
+			std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
+			size_t new_cap = (this->size() * 2 > 0) ? this->size() * 2 : 1; 
+			_begin = _a.allocate(new_cap);
+			_end = _begin;
+			_end_cap = _begin + new_cap;
+			while (tmp_begin != tmp_end) {
+				if (tmp_begin == __p) {
+					_a.construct(_end, __X);
+					_end++;
+				}
+				_a.construct(_end, *tmp_begin);
+				_end++;
+				tmp_begin++;
+			}
+			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+		}
+		size_type __p_len = &(*__p) - _begin;
+		return (iterator(_begin +__p_len));
 	}
 
+	iterator insert( const_iterator __position, size_type __n, const _T& __X )
+	{
+		pointer __p = this->_begin + (__position - begin());
+		if (__n > 0)
+		{
+			pointer _old_p = __p;
+			if (__n <= static_cast<size_type>(this->_end_cap - this->_end)) {
+				if (__p == this->_end) {
+					while (__n--) {
+						_a.construct(_end, __X);
+						_end++;
+					}
+				}
+				else {
+					pointer __i = this->_end + __n - 1;
+					for (; __i >= this->_begin + __n; --__i) {
+						this->_a.construct(__i, *(__i - __n));
+					}
+					while (__n--) {
+						_a.construct(__p, __X);
+						_end++;
+						__p++;
+					}
+					__p = _old_p;
+				}
+			}
+			else {
+				pointer		tmp_begin = _begin;
+				pointer		tmp_end = _end;
+				pointer		tmp_end_cap = _end_cap;
+				pointer		tmp_begin2 = _begin;
+
+				std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
+				size_t new_cap = (this->size() * 2 > 0) ? (this->size() + __n) * 2 : __n; 
+				_begin = _a.allocate(new_cap);
+				_end = _begin;
+				_end_cap = _begin + new_cap;
+				while (tmp_begin != tmp_end) {
+					if (tmp_begin == __p) {
+						while (__n--) {
+							_a.construct(_end, __X);
+							_end++;
+						}
+					}
+					_a.construct(_end, *tmp_begin);
+					_end++;
+					tmp_begin++;
+				}
+				_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+			}
+		}
+		size_type __p_len = &(*__p) - _begin;
+		return (iterator(_begin +__p_len));
+	}
+
+	template< typename InputIt >
+	iterator insert(const_iterator _position,
+					InputIt _first, typename enable_if <is_input_iterator<InputIt>::value,
+					InputIt>::type _last)
+	{
+		pointer __p = this->_begin + (_position - begin());
+		difference_type __n = ft::_distance(_first, _last);
+		if (__n > 0)
+		{
+			pointer _old_p = __p;
+			if (__n <= static_cast<size_type>(this->_end_cap - this->_end)) {
+				if (__p == this->_end) {
+					while (_first != _last) {
+						_a.construct(_end, *_first);
+						_first++;
+					}
+				}
+				else {
+					pointer __i = this->_end + __n - 1;
+					for (; __i >= this->_begin + __n; --__i) {
+						this->_a.construct(__i, *(__i - __n));
+					}
+					while (_first != _last) {
+						_a.construct(_end, *_first);
+						_first++;
+						_end++;
+						__p++;
+					}
+					__p = _old_p;
+				}
+			}
+			else {
+				pointer		tmp_begin = _begin;
+				pointer		tmp_end = _end;
+				pointer		tmp_end_cap = _end_cap;
+				pointer		tmp_begin2 = _begin;
+
+				// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
+				size_t new_cap = (this->size() * 2 > 0) ? (this->size() + __n) * 2 : __n; 
+				_begin = _a.allocate(new_cap);
+				_end = _begin;
+				_end_cap = _begin + new_cap;
+				while (tmp_begin != tmp_end) {
+					if (tmp_begin == __p) {
+						while (_first != _last) {
+							_a.construct(_end, *_first);
+							_first++;
+							_end++;
+						}
+					}
+					_a.construct(_end, *tmp_begin);
+					_end++;
+					tmp_begin++;
+				}
+				_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+			}
+		}
+		size_type __p_len = &(*__p) - _begin;
+		return (iterator(_begin +__p_len));
+	}
+
+	template <typename T>
+	void push_back( const T& value)
+	{
+		if (size() + 1 > capacity()) {
+			if (capacity() == 0)
+				reserve(capacity() + 1);
+			else
+				reserve(capacity() * 2);
+		}
+		_a.construct(_end, value);
+		_end++;
+	}
+
+
+	void swap( vector& other )
+	{
+		pointer	tmp_begin = _begin;
+		pointer tmp_end = _end;
+		pointer tmp_end_cap = _end_cap;
+		allocator_type tmp_a = _a;
+
+		this->_begin = other._begin;
+		this->_end = other._end;
+		this->_end_cap = other._end_cap;
+		this->_a = other._a;
+
+		other._begin = tmp_begin;
+		other._end = tmp_end;
+		other._end_cap = tmp_end_cap;
+		other._a = tmp_a;
+	}
+
+	void clear() {
+		size_type tmp_size = size();
+		for (size_type _i = 0; _i < tmp_size; _i++)
+		{
+			_end--;
+			_a.destroy(_end);
+		}
+	}
+
+	iterator erase( iterator _position)
+	{
+		pointer __p = this->_begin + (_position - begin());
+		// this->_a.destroy(__p);
+		this->_a.destroy(std::uninitialized_copy(__p + 1, this->_end--, __p));
+  		return (iterator(this->_begin + (_position - begin())));
+	}
+
+	iterator erase(iterator _first, iterator _last)
+	{
+		pointer __p = this->_begin + (_first - begin());
+		pointer __p_last = this->_begin + (_last - begin());
+		pointer _old_p = __p;
+		if (_first != _last)
+		{
+			while (__p != __p_last)
+				this->_a.destroy(__p++);
+		}
+		this->_a.destroy(std::uninitialized_copy(__p_last, this->_end--, _old_p));
+		return (iterator(this->_begin + (_first - begin())));
+	}
 	private:
 		allocator_type _a;
 		pointer _begin;
 		pointer _end;
 		pointer _end_cap;
 
-   };
+   }; //end vector class
+
+   	template <class T, class Alloc>
+		void swap (vector<T,Alloc>& x, vector<T,Alloc>&y)
+	{
+		x.swap(y);
+	};
 };
+
+
 
 #endif

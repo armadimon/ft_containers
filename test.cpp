@@ -267,10 +267,142 @@ void ft_test()
 	std::cout << v4.size() << std::endl;
 }
 
+template<class Os, class Co> Os& operator<<(Os& os, const Co& co) {
+    os << "{";
+    for (auto const& i : co) { os << ' ' << i; }
+    return os << " } ";
+}
+ 
+void test_swap()
+{
+    ft::vector<int> a1, a2;
+
+	a1.push_back(1);
+	a1.push_back(2);
+	a1.push_back(3);
+
+	a2.push_back(4);
+	a2.push_back(5);
+ 
+    auto it1 = a1.begin();
+    auto it2 = a2.begin();
+ 
+    int& ref1 = a1.front();
+    int& ref2 = a2.front();
+ 
+    std::cout << a1 << a2 << '\n';
+    a1.swap(a2);
+    std::cout << a1 << a2 << '\n';
+ 
+    // Note that after swap the iterators and references stay associated with their
+    // original elements, e.g. it1 that pointed to an element in 'a1' with value 2
+    // still points to the same element, though this element was moved into 'a2'.
+}
+
+
+	void print(int id, const std::vector<int>& container)
+{
+    std::cout << id << ". ";
+    for (const int x: container)
+        std::cout << x << ' ';
+    std::cout << '\n';
+}
+ 	void print(int id, const ft::vector<int>& container)
+{
+    std::cout << id << ". ";
+    for (const int x: container)
+        std::cout << x << ' ';
+    std::cout << '\n';
+}
+ 
+void test_insert()
+{
+    // ft::vector<int> c1(5, 100);
+    std::vector<int> c1;
+
+	c1.push_back(1);
+	c1.push_back(2);
+	c1.push_back(3);
+	c1.push_back(4);
+	c1.push_back(5);
+	// c1.reserve(100);
+	// std::cout << c1.capacity() << "\n";
+    print(1, c1);
+ 
+    auto it = c1.begin();
+    it = c1.insert(it, 200);
+	std::cout << *it << "it \n";
+	// std::cout << c1.capacity() << "\n";
+    print(2, c1);
+ 
+    c1.insert(it, 2, 300);
+    print(3, c1);
+ 
+    // `it` no longer valid, get a new one:
+    it = c1.begin();
+ 
+    std::vector<int> c2(2, 400);
+    // c1.insert(std::next(it, 2), c2.begin(), c2.end());
+    c1.insert(it + 2, c2.begin(), c2.end());
+    print(4, c1);
+ 
+    // int arr[] = {501, 502, 503};
+    // c1.insert(c1.begin(), arr, arr + std::size(arr));
+    // print(5, c1);
+ 
+    // c1.insert(c1.end(), {601, 602, 603});
+    // print(6, c1);
+}
+
+void print_container(const std::vector<int>& c) 
+{
+    for (int i : c)
+        std::cout << i << " ";
+    std::cout << '\n';
+}
+
+void print_container(const ft::vector<int>& c) 
+{
+    for (int i : c)
+        std::cout << i << " ";
+    std::cout << '\n';
+}
+
+void test_erase()
+{
+	
+	ft::vector<int> c;
+	for (int i = 1; i < 10; i++)
+		c.push_back(i);
+    print_container(c);
+
+	std::cout << c.size() << std::endl;
+    c.erase(c.begin());
+    print_container(c);
+
+	std::cout << c.size() << std::endl;
+ 
+    c.erase(c.begin()+2, c.begin()+5);
+    print_container(c);
+ 
+    // Erase all even numbers
+    for (ft::vector<int>::iterator it = c.begin(); it != c.end();)
+    {
+        if (*it % 2 == 0)
+            it = c.erase(it);
+        else
+            ++it;
+    }
+    print_container(c);
+}
+
 int main()
 {
-	ft_test();
-	system("leaks a.out");
+	// ft_test();
+	// test_swap();
+	// test_insert();
+	test_erase();
+	// system("leaks a.out");
 	return (0);
 }
 // template <class Tp>
