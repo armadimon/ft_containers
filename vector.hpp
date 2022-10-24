@@ -184,7 +184,6 @@ class vector {
 		_a(_alloc)
 	{
 		size_type _n = static_cast<size_type>(ft::_distance(first, last));
-		std::cout << "range " << _n << std::endl;
 		InputIt tmp_first = first;
 		_begin = _a.allocate(_n);
 		_end_cap = _begin + _n;
@@ -214,17 +213,44 @@ class vector {
 		}
 	}
 
+	vector(const vector& _x)
+		:
+		_a(_x._a),
+		_begin(nullptr),
+		_end(nullptr),
+		_end_cap(nullptr)
+	{
+  		clear();
+		size_type _n = _x.size();
+		_begin = _a.allocate(_n);
+		_end_cap = _begin + _n;
+		_end = _begin;
+  		this->_end = std::uninitialized_copy(_x._begin, _x._end, this->_begin);
+	}
+
+	vector<_T, Allocator>& operator=(const vector<_T, Allocator>& other) {
+	if (this != &other) {
+		if (this->_a != other._a) {
+			clear();
+			this->_a.deallocate(this->_begin, capacity());
+			this->_begin = this->_end = this->_end_cap = NULL;
+			this->_a = other._a;
+		}
+		assign(other._begin, other._end);
+	}
+		return *this;
+	}
+
 	~vector()
 	{
-		if (_begin != nullptr) {
-			_a.deallocate(_begin, _end_cap - _begin);
-		}
+		this->clear();
+		if (this->_begin != nullptr)
+			_a.deallocate(_begin, this->capacity());
 	}
 	
 	template <typename InputIt>
-	void assign(InputIt first, InputIt last,
-		typename ft::enable_if<ft::is_input_iterator<InputIt>::value,
-		InputIt>::type* = 0) {
+	void assign(InputIt first, 	typename ft::enable_if<ft::is_input_iterator<InputIt>::value,
+		InputIt>::type last) {
 		size_type _new_size = static_cast<size_type>(ft::_distance(first, last));
 		if (_new_size > capacity())
 		{
@@ -246,22 +272,42 @@ class vector {
 		}
 		else
 		{
-			InputIt __mid = last;
-			bool __growing = false;
-			if (_new_size > size())
-			{
-				__growing = true;
-				__mid =  first;
-				_VSTD::advance(__mid, size());
-			}
-			pointer __m = _VSTD::copy(first, __mid, this->_begin);
-			if (__growing)
-				__construct_at_end(__mid, last, _new_size - size());
-			else
-				this->__destruct_at_end(__m);
-
-			}
+			_end = _begin + _new_size;
+			std::uninitialized_copy(first, last, _begin);
+		}
 	}
+
+	void assign(size_type __n, const_reference __u)
+	{
+		if (__n > capacity())
+		{
+			pointer		tmp_begin = _begin;
+			pointer		tmp_end = _end;
+			pointer		tmp_end_cap = _end_cap;
+			pointer		tmp_begin2 = _begin;
+	
+			_begin = _a.allocate(__n);
+			_end_cap = _begin + __n;
+			_end = _begin;
+			while (_end != _end_cap) {
+				_a.construct(_end, __u);
+				_end++;
+			}
+			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+		}
+		else
+		{
+			_end = _begin + __n;
+			std::uninitialized_copy(_begin, _end, _begin);
+			pointer	tmp_begin =_begin;
+			while (tmp_begin != _end)
+			{
+				_a.construct(tmp_begin, __u);
+				tmp_begin++;
+			}
+		}
+	}
+
 
 	// Iterators
 	iterator begin() NOEXCEPT { return (this->_begin); };
@@ -339,43 +385,34 @@ class vector {
 
 	reference       front() NOEXCEPT
     {
-        _LIBCPP_ASSERT(!empty(), "front() called for empty vector");
         return *this->_begin;
     }
     
 	const_reference front() const NOEXCEPT
     {
-        _LIBCPP_ASSERT(!empty(), "front() called for empty vector");
         return *this->_begin;
     }
     
 	reference       back() NOEXCEPT
     {
-        _LIBCPP_ASSERT(!empty(), "back() called for empty vector");
-        return *(this->__end_ - 1);
+        return *(this->_end - 1);
     }
     
 	const_reference back()  const NOEXCEPT
     {
-        _LIBCPP_ASSERT(!empty(), "back() called for empty vector");
-        return *(this->__end_ - 1);
+        return *(this->_end - 1);
     }
 
 	reference operator[](size_type _n) NOEXCEPT {
 		return (this->_begin[_n]);
 	}
 
-    // value_type*       data() NOEXCEPT
-    //     {return (this->_begin);}
-	
-    // const value_type* data() const NOEXCEPT
-    //     {return (this->_begin);}
-
 	// Modifiers
 
 	iterator insert( const_iterator __position, const _T& __X )
 	{
 		pointer __p = this->_begin + (__position - begin());
+		size_type __p_len = &(*__p) - _begin;
 		if (this->_end < this->_end_cap)
 		{
 			if (__p == this->_end) {
@@ -398,7 +435,6 @@ class vector {
 			pointer		tmp_end_cap = _end_cap;
 			pointer		tmp_begin2 = _begin;
 			
-			std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
 			size_t new_cap = (this->size() * 2 > 0) ? this->size() * 2 : 1; 
 			_begin = _a.allocate(new_cap);
 			_end = _begin;
@@ -414,13 +450,13 @@ class vector {
 			}
 			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
 		}
-		size_type __p_len = &(*__p) - _begin;
 		return (iterator(_begin +__p_len));
 	}
 
 	iterator insert( const_iterator __position, size_type __n, const _T& __X )
 	{
 		pointer __p = this->_begin + (__position - begin());
+		size_type __p_len = &(*__p) - _begin;
 		if (__n > 0)
 		{
 			pointer _old_p = __p;
@@ -450,8 +486,7 @@ class vector {
 				pointer		tmp_end_cap = _end_cap;
 				pointer		tmp_begin2 = _begin;
 
-				std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
-				size_t new_cap = (this->size() * 2 > 0) ? (this->size() + __n) * 2 : __n; 
+				size_t new_cap = (this->size() * 2 > 0) ? (this->size() * 2) : __n; 
 				_begin = _a.allocate(new_cap);
 				_end = _begin;
 				_end_cap = _begin + new_cap;
@@ -469,16 +504,17 @@ class vector {
 				_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
 			}
 		}
-		size_type __p_len = &(*__p) - _begin;
 		return (iterator(_begin +__p_len));
 	}
 
 	template< typename InputIt >
 	iterator insert(const_iterator _position,
-					InputIt _first, typename enable_if <is_input_iterator<InputIt>::value,
-					InputIt>::type _last)
+					InputIt _first, typename enable_if<is_input_iterator<InputIt>::value, InputIt>::type _last)
 	{
+		if (_begin == nullptr)
+			throw std::bad_alloc();
 		pointer __p = this->_begin + (_position - begin());
+		size_type __p_len = &(*__p) - _begin;
 		difference_type __n = ft::_distance(_first, _last);
 		if (__n > 0)
 		{
@@ -510,8 +546,7 @@ class vector {
 				pointer		tmp_end_cap = _end_cap;
 				pointer		tmp_begin2 = _begin;
 
-				// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
-				size_t new_cap = (this->size() * 2 > 0) ? (this->size() + __n) * 2 : __n; 
+				size_t new_cap = (this->size() > 0) ? (this->size() * 2) : __n;
 				_begin = _a.allocate(new_cap);
 				_end = _begin;
 				_end_cap = _begin + new_cap;
@@ -530,7 +565,6 @@ class vector {
 				_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
 			}
 		}
-		size_type __p_len = &(*__p) - _begin;
 		return (iterator(_begin +__p_len));
 	}
 
@@ -575,11 +609,11 @@ class vector {
 		}
 	}
 
-	iterator erase( iterator _position)
+	iterator erase(iterator _position)
 	{
 		pointer __p = this->_begin + (_position - begin());
-		// this->_a.destroy(__p);
-		this->_a.destroy(std::uninitialized_copy(__p + 1, this->_end--, __p));
+		this->_a.destroy(__p);
+		std::uninitialized_copy(__p + 1, this->_end--, __p);
   		return (iterator(this->_begin + (_position - begin())));
 	}
 
@@ -587,15 +621,50 @@ class vector {
 	{
 		pointer __p = this->_begin + (_first - begin());
 		pointer __p_last = this->_begin + (_last - begin());
+		// pointer __tmp_p_last = this->_begin + (_last - begin());
+		difference_type __diff = _first - begin();
+		// std::cout << __diff << std::endl;
 		pointer _old_p = __p;
 		if (_first != _last)
 		{
-			while (__p != __p_last)
-				this->_a.destroy(__p++);
+			while (__p_last-- != __p)
+			{
+				this->_a.destroy(__p_last);
+				_a.construct(__p_last, *(--this->_end));
+			}
 		}
-		this->_a.destroy(std::uninitialized_copy(__p_last, this->_end--, _old_p));
-		return (iterator(this->_begin + (_first - begin())));
+		else
+			return (_last);
+		return (iterator(this->_begin + __diff));
 	}
+
+	void	resize (size_type _n, value_type _x = value_type())
+	{
+		if (_n > this->max_size())
+			throw (std::length_error("vector::resize"));
+		else if (_n < this->size())
+		{
+			while (this->size() > _n)
+			{
+				_end--;
+				_a.destroy(_end);
+			}
+		}
+		else
+		{
+			if (_n > this->capacity())
+				this->reserve(this->capacity() * 2);
+			this->insert(this->end(), _n - this->size(), _x);
+		}
+	}
+
+	void	pop_back()
+	{
+		_end--;
+		_a.destroy(_end);
+	}
+
+	
 	private:
 		allocator_type _a;
 		pointer _begin;
@@ -604,13 +673,15 @@ class vector {
 
    }; //end vector class
 
-   	template <class T, class Alloc>
-		void swap (vector<T,Alloc>& x, vector<T,Alloc>&y)
+
+};
+
+namespace std {
+	template <class _T, class Allocator>
+		void swap(ft::vector<_T,Allocator>& x, ft::vector<_T,Allocator>&y)
 	{
 		x.swap(y);
 	};
-};
-
-
+}
 
 #endif

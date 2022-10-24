@@ -371,7 +371,7 @@ void print_container(const ft::vector<int>& c)
 void test_erase()
 {
 	
-	ft::vector<int> c;
+	std::vector<int> c;
 	for (int i = 1; i < 10; i++)
 		c.push_back(i);
     print_container(c);
@@ -386,7 +386,7 @@ void test_erase()
     print_container(c);
  
     // Erase all even numbers
-    for (ft::vector<int>::iterator it = c.begin(); it != c.end();)
+    for (std::vector<int>::iterator it = c.begin(); it != c.end();)
     {
         if (*it % 2 == 0)
             it = c.erase(it);
@@ -396,12 +396,126 @@ void test_erase()
     print_container(c);
 }
 
+void test_nomal()
+{
+	 std::string str, ft_str;
+        /*
+         * var to store the size and the capacity
+         */
+        ft::vector<std::string>::size_type s, ft_s;
+        ft::vector<std::string>::size_type c, ft_c;
+        std::vector<std::string>::iterator it;
+        ft::vector<std::string>::iterator ft_it;
+        /*
+         * bool to store the comparison
+         */
+        bool cond;
+        /*------------------ test 1: erase from the begin to end -------------------*/
+        {
+            std::vector<std::string> v(100, "hello");
+            ft::vector<std::string> ft_v(100, "hello");
+
+            it = v.erase(v.begin(), v.end());
+            ft_it = ft_v.erase(ft_v.begin(), ft_v.end());
+
+            s = v.size();
+            ft_s = ft_v.size();
+            c = v.size();
+            ft_c = ft_v.size();
+            for (size_t i = 0; i < v.size(); ++i)
+                str += v[i];
+            for (size_t i = 0; i < ft_v.size(); ++i)
+                ft_str += ft_v[i];
+            cond = ((str == ft_str) && (s == ft_s) && (c == ft_c));
+            // cond = (cond && (std::distance(v.begin(), it) == std::distance(ft_v.begin(), ft_it)));
+			std::cout << cond << std::endl;
+        }
+}
+
+void test_trait()
+{
+}
+
+template <typename T>
+std::vector<int> constructor_test(std::vector<T> vector) {
+    std::vector<int> v;
+    std::vector<int> tmp0(vector);
+    std::vector<int> tmp(1000, 4), tmp2(1000, 5);
+    tmp = tmp2;
+    std::vector<int> tmp3(tmp);
+    std::vector<int> tmp4(tmp.begin(), tmp.end());
+    v.push_back(tmp4.size());
+    v.push_back(tmp4.capacity());
+    v.push_back(tmp[2]);
+    v.push_back(tmp3[2]);
+    v.push_back(tmp4[2]);
+    try { std::vector<int> tmp5(-1, -1); }
+    catch (std::exception &e) {
+		v.push_back(1);
+		std::cout << "check" << std::endl;
+		}
+    return v;
+}
+
+template <typename T>
+ft::vector<int> constructor_test(ft::vector<T> vector) {
+    ft::vector<int> v;
+    ft::vector<int> tmp0(vector);
+    ft::vector<int> tmp(1000, 4), tmp2(1000, 5);
+    // tmp = tmp2;
+    ft::vector<int> tmp3(tmp);
+    ft::vector<int> tmp4(tmp.begin(), tmp.end());
+    v.push_back(tmp4.size());
+    v.push_back(tmp4.capacity());
+    v.push_back(tmp[2]);
+    v.push_back(tmp3[2]);
+    v.push_back(tmp4[2]);
+    try { ft::vector<int> tmp5(-1, -1); }
+    catch (std::exception &e) {
+		v.push_back(1);
+		std::cout << "check" << std::endl;
+		}
+    return v;
+}
+
+void test_size()
+{
+    ft::vector<int> c;
+	c.push_back(1);
+	c.push_back(2);
+	c.push_back(3);
+    std::cout << "The vector holds: ";
+    for (const auto& el: c) std::cout << el << ' ';
+    std::cout << '\n';
+ 
+    c.resize(5);
+    std::cout << "After resize up to 5: ";
+    for (const auto& el: c) std::cout << el << ' ';
+    std::cout << '\n';
+ 
+    c.resize(2);
+    std::cout << "After resize down to 2: ";
+    for (const auto& el: c) std::cout << el << ' ';
+    std::cout << '\n';
+ 
+    c.resize(6, 4);
+    std::cout << "After resize up to 6 (initializer = 4): ";
+    for (const auto& el: c) std::cout << el << ' ';
+    std::cout << '\n';
+}
+
 int main()
 {
 	// ft_test();
 	// test_swap();
 	// test_insert();
-	test_erase();
+	// test_erase();
+	// test_nomal();
+	// ft::vector<int> v1;
+	// std::vector<int> v2;
+	// begin_test(v1);
+	// begin_test(v2);
+	test_size();
 	// system("leaks a.out");
 	return (0);
 }

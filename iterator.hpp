@@ -6,11 +6,11 @@
 
 namespace ft {
 
-	struct  input_iterator_tag {};
-	struct  output_iterator_tag {};
-	struct  forward_iterator_tag       : public input_iterator_tag {};
-	struct  bidirectional_iterator_tag : public forward_iterator_tag {};
-	struct  random_access_iterator_tag : public bidirectional_iterator_tag {};
+	// struct  input_iterator_tag {};
+	// struct  output_iterator_tag {};
+	// struct  forward_iterator_tag       : public input_iterator_tag {};
+	// struct  bidirectional_iterator_tag : public forward_iterator_tag {};
+	// struct  random_access_iterator_tag : public bidirectional_iterator_tag {};
 
 
     template <typename _Category, typename _T, typename _Distance = ptrdiff_t,
@@ -71,7 +71,7 @@ namespace ft {
 
 template <typename _T>
 struct iterator_traits<_T *> {
-	typedef random_access_iterator_tag iterator_category;
+	typedef std::random_access_iterator_tag iterator_category;
 	typedef _T value_type;
 	typedef ptrdiff_t difference_type;
 	typedef _T *pointer;
@@ -80,7 +80,7 @@ struct iterator_traits<_T *> {
 
 template <typename _T>
 struct iterator_traits<const _T *> {
-	typedef random_access_iterator_tag iterator_category;
+	typedef std::random_access_iterator_tag iterator_category;
 	typedef typename std::remove_cv<_T>::type value_type;
 	typedef ptrdiff_t difference_type;
 	typedef const _T *pointer;
@@ -105,33 +105,33 @@ struct is_iterator<_T *, true> : public true_type {
 template <typename _Iter>
 struct is_input_iterator : public integral_constant<bool,
 	(is_same<typename is_iterator<_Iter>::category,
-	random_access_iterator_tag>::value ||
+	std::random_access_iterator_tag>::value ||
 	is_same<typename is_iterator<_Iter>::category,
-	bidirectional_iterator_tag>::value ||
+	std::bidirectional_iterator_tag>::value ||
 	is_same<typename is_iterator<_Iter>::category,
-	forward_iterator_tag>::value ||
+	std::forward_iterator_tag>::value ||
 	is_same<typename is_iterator<_Iter>::category,
-	input_iterator_tag>::value)>
+	std::input_iterator_tag>::value)>
 {};
 
 template <typename _Iter>
 struct is_forward_iterator : public integral_constant<bool,
 	(is_same<typename is_iterator<_Iter>::category,
-	random_access_iterator_tag>::value ||
+	std::random_access_iterator_tag>::value ||
 	is_same<typename is_iterator<_Iter>::category,
-	bidirectional_iterator_tag>::value ||
+	std::bidirectional_iterator_tag>::value ||
 	is_same<typename is_iterator<_Iter>::category,
-	forward_iterator_tag>::value)>
+	std::forward_iterator_tag>::value)>
 {};
 
 template <typename _Iter>
 struct is_output_iterator : public integral_constant<
-	bool, is_same<typename is_iterator<_Iter>::category, random_access_iterator_tag>::value>
+	bool, is_same<typename is_iterator<_Iter>::category, std::output_iterator_tag>::value>
 {};
 
 template <typename _Iter>
 struct is_random_access_iterator : public integral_constant<
-	bool, is_same<typename is_iterator<_Iter>::category, random_access_iterator_tag>::value>
+	bool, is_same<typename is_iterator<_Iter>::category, std::random_access_iterator_tag>::value>
 {};
 
 template <class _InputIter>
