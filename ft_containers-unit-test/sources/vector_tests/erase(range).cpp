@@ -8,16 +8,22 @@ std::vector<int> erase_test_2(std::vector<T> vector) {
         vector.push_back(i);
     g_start1 = timer();
     v.push_back(*(vector.erase(vector.begin() + 8 * _ratio, vector.end() - 1500 * _ratio)));
-    g_end1 = timer();
+    g_end1 = timer();   
     v.push_back(*(vector.begin() + 82 * _ratio));
     v.push_back(vector.size());
     v.push_back(vector.capacity());
-        std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "std : " << *it << std::endl;
-		it++;
-	}
+    //     std::vector<int>::iterator it = v.begin();
+    //     std::vector<int>::iterator it1 = vector.begin();
+    // while (it1 != vector.end())
+	// {
+	// 	std::cout << "std : " << *it1 << std::endl;
+	// 	it1++;
+	// }
+	// while (it != v.end())
+	// {
+	// 	std::cout << "std : " << *it << std::endl;
+	// 	it++;
+	// }
     return v;
 }
 
@@ -32,12 +38,18 @@ std::vector<int> erase_test_2(_vector<T> vector) {
     v.push_back(*(vector.begin() + 82 * _ratio));
     v.push_back(vector.size());
     v.push_back(vector.capacity());
-        std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "ft : " << *it << std::endl;
-		it++;
-	}
+    //     std::vector<int>::iterator it = v.begin();
+    //             ft::vector<int>::iterator it1 = vector.begin();
+    // while (it1 != vector.end())
+	// {
+	// 	std::cout << "ft : " << *it1 << std::endl;
+	// 	it1++;
+	// }
+	// while (it != v.end())
+	// {
+	// 	std::cout << "ft : " << *it << std::endl;
+	// 	it++;
+	// }
     return v;
 }
 

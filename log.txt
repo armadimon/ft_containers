@@ -1,0 +1,7 @@
+hello
+hello
+[1;32mAC[0m
+The vector holds: 1 2 3 
+After resize up to 5: 1 2 3 0 0 
+After resize down to 2: 1 2 
+After resize up to 6 (initializer = 4): 1 2 4 4 4 4 

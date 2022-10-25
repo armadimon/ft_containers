@@ -1,0 +1,16 @@
+resize()                      std : 5000
+std : 9900
+std : 7000
+std : 9900
+std : 15300
+std : 19800
+std : 1
+0
+ft : 5000
+ft : 9900
+ft : 5000
+ft : 9900
+ft : 5000
+ft : 19800
+ft : 0
+[1;31mFAILED[0m             [1;32m0ms[0m                [1;31m1ms[0m                [1;32mCLEAR[0m              

@@ -199,9 +199,6 @@ class vector {
 		const value_type& _x = value_type(),
 		const allocator_type& _alloc = allocator_type())
 		:
-		_end_cap(nullptr),
-		_begin(nullptr),
-		_end(nullptr),
 		_a(_alloc)
 	{
 		_begin = _a.allocate(_n);
@@ -255,11 +252,8 @@ class vector {
 		if (_new_size > capacity())
 		{
 			pointer		tmp_begin = _begin;
-			pointer		tmp_end = _end;
 			pointer		tmp_end_cap = _end_cap;
-			pointer		tmp_begin2 = _begin;
 
-			// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
 			_begin = _a.allocate(_new_size);
 			_end_cap = _begin + _new_size;
 			_end = _begin;
@@ -268,7 +262,7 @@ class vector {
 				_end++;
 				first++;
 			}
-			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+			_a.deallocate(tmp_begin, tmp_end_cap - tmp_begin);
 		}
 		else
 		{
@@ -282,9 +276,7 @@ class vector {
 		if (__n > capacity())
 		{
 			pointer		tmp_begin = _begin;
-			pointer		tmp_end = _end;
 			pointer		tmp_end_cap = _end_cap;
-			pointer		tmp_begin2 = _begin;
 	
 			_begin = _a.allocate(__n);
 			_end_cap = _begin + __n;
@@ -293,7 +285,7 @@ class vector {
 				_a.construct(_end, __u);
 				_end++;
 			}
-			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
+			_a.deallocate(tmp_begin, tmp_end_cap - tmp_begin);
 		}
 		else
 		{
@@ -308,11 +300,12 @@ class vector {
 		}
 	}
 
+	allocator_type get_allocator() const {return (this->_a); }
 
 	// Iterators
-	iterator begin() NOEXCEPT { return (this->_begin); };
+	iterator begin() NOEXCEPT { return (this->_begin); }
 
-	const_iterator begin() const { return (_begin); }
+	const_iterator begin() const { return (this->_begin); }
 
 	iterator end() { return this->_end; }
 
@@ -352,8 +345,7 @@ class vector {
 			pointer		tmp_end = _end;
 			pointer		tmp_end_cap = _end_cap;
 			pointer		tmp_begin2 = _begin;
-			
-			// std::cout << "reserve "<< &_begin << " == " << &tmp_begin << " == " << &tmp_begin2 << std::endl;
+
 			_begin = _a.allocate(new_cap);
 			_end_cap = _begin + new_cap;
 			_end = _begin;
@@ -365,7 +357,6 @@ class vector {
 			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
 		}
 	}
-
 
 	// element access
 
@@ -406,6 +397,10 @@ class vector {
 	reference operator[](size_type _n) NOEXCEPT {
 		return (this->_begin[_n]);
 	}
+	
+	const_reference operator[](size_type _n) const NOEXCEPT {
+		return (this->_begin[_n]);
+	}
 
 	// Modifiers
 
@@ -413,6 +408,7 @@ class vector {
 	{
 		pointer __p = this->_begin + (__position - begin());
 		size_type __p_len = &(*__p) - _begin;
+
 		if (this->_end < this->_end_cap)
 		{
 			if (__p == this->_end) {
@@ -421,7 +417,8 @@ class vector {
 			}
 			else {
 				pointer __i = this->_end;
-				for (; __i >= this->_begin; --__i) {
+
+				for (; __i >= __p + 1; --__i) {
 					this->_a.construct(__i, *(__i - 1));
 				}
 				_a.construct(__p, __X);
@@ -435,10 +432,15 @@ class vector {
 			pointer		tmp_end_cap = _end_cap;
 			pointer		tmp_begin2 = _begin;
 			
-			size_t new_cap = (this->size() * 2 > 0) ? this->size() * 2 : 1; 
+			difference_type new_cap = (this->size() * 2 > 0) ? this->size() * 2 : 1; 
 			_begin = _a.allocate(new_cap);
 			_end = _begin;
 			_end_cap = _begin + new_cap;
+			if (new_cap == 1)
+			{
+				_a.construct(_end, __X);
+				_end++;
+			}
 			while (tmp_begin != tmp_end) {
 				if (tmp_begin == __p) {
 					_a.construct(_end, __X);
@@ -486,10 +488,17 @@ class vector {
 				pointer		tmp_end_cap = _end_cap;
 				pointer		tmp_begin2 = _begin;
 
-				size_t new_cap = (this->size() * 2 > 0) ? (this->size() * 2) : __n; 
+				difference_type new_cap = (this->capacity() * 2 <= __n) ? this->capacity() + __n : (this->capacity() * 2); 
 				_begin = _a.allocate(new_cap);
 				_end = _begin;
 				_end_cap = _begin + new_cap;
+				if (tmp_begin == nullptr)
+				{
+					while (__n--) {
+						_a.construct(_end, __X);
+						_end++;
+					}
+				}
 				while (tmp_begin != tmp_end) {
 					if (tmp_begin == __p) {
 						while (__n--) {
@@ -511,15 +520,14 @@ class vector {
 	iterator insert(const_iterator _position,
 					InputIt _first, typename enable_if<is_input_iterator<InputIt>::value, InputIt>::type _last)
 	{
-		if (_begin == nullptr)
-			throw std::bad_alloc();
 		pointer __p = this->_begin + (_position - begin());
 		size_type __p_len = &(*__p) - _begin;
-		difference_type __n = ft::_distance(_first, _last);
+		size_type __n = ft::_distance(_first, _last);
+		size_type __diff = this->_end_cap - this->_end;
 		if (__n > 0)
 		{
 			pointer _old_p = __p;
-			if (__n <= static_cast<size_type>(this->_end_cap - this->_end)) {
+			if (__n <= __diff) {
 				if (__p == this->_end) {
 					while (_first != _last) {
 						_a.construct(_end, *_first);
@@ -532,7 +540,7 @@ class vector {
 						this->_a.construct(__i, *(__i - __n));
 					}
 					while (_first != _last) {
-						_a.construct(_end, *_first);
+						_a.construct(__p, *_first);
 						_first++;
 						_end++;
 						__p++;
@@ -546,10 +554,25 @@ class vector {
 				pointer		tmp_end_cap = _end_cap;
 				pointer		tmp_begin2 = _begin;
 
-				size_t new_cap = (this->size() > 0) ? (this->size() * 2) : __n;
+				difference_type new_cap = (this->capacity() * 2 <= __n) ? this->capacity() + __n : (this->capacity() * 2); 
 				_begin = _a.allocate(new_cap);
 				_end = _begin;
 				_end_cap = _begin + new_cap;
+				if (tmp_begin == nullptr)
+				{
+					try
+					{
+						_end = std::uninitialized_copy(_first, _last, _begin);
+					}
+					catch (...)
+					{
+						_a.deallocate(_begin, _end_cap - _begin);
+						_begin = nullptr;
+						_end = nullptr;
+						_end_cap = nullptr;
+						throw ;
+					}
+				}
 				while (tmp_begin != tmp_end) {
 					if (tmp_begin == __p) {
 						while (_first != _last) {
@@ -621,40 +644,75 @@ class vector {
 	{
 		pointer __p = this->_begin + (_first - begin());
 		pointer __p_last = this->_begin + (_last - begin());
-		// pointer __tmp_p_last = this->_begin + (_last - begin());
-		difference_type __diff = _first - begin();
-		// std::cout << __diff << std::endl;
 		pointer _old_p = __p;
 		if (_first != _last)
 		{
-			while (__p_last-- != __p)
+			while (__p != this->_end)
 			{
-				this->_a.destroy(__p_last);
-				_a.construct(__p_last, *(--this->_end));
+				this->_a.destroy(__p);
+				if (__p_last != this->_end)
+					_a.construct(__p, *__p_last);
+				__p++;
+				__p_last++;
 			}
 		}
 		else
 			return (_last);
-		return (iterator(this->_begin + __diff));
+		this->_end -= ft::_distance(_first, _last);
+		return (iterator(_old_p));
 	}
 
 	void	resize (size_type _n, value_type _x = value_type())
 	{
-		if (_n > this->max_size())
-			throw (std::length_error("vector::resize"));
-		else if (_n < this->size())
+		if (this->capacity() > _n)
 		{
-			while (this->size() > _n)
+			if (this->size() < _n)
 			{
-				_end--;
-				_a.destroy(_end);
+				pointer	_tmp_begin = _begin;
+				pointer _new_end = _begin + _n;
+
+				while (_tmp_begin != _end)
+					_tmp_begin++;
+				while (_tmp_begin != _new_end)
+				{
+					_a.construct(_tmp_begin, _x);
+					_tmp_begin++;
+					_end++;
+				}
+			}
+			else if (this->size() > _n)
+			{
+				while (this->size() > _n)
+				{
+					_end--;
+					_a.destroy(_end);
+				}
 			}
 		}
 		else
 		{
-			if (_n > this->capacity())
-				this->reserve(this->capacity() * 2);
-			this->insert(this->end(), _n - this->size(), _x);
+			pointer		tmp_begin = _begin;
+			pointer		tmp_end = _end;
+			pointer		tmp_end_cap = _end_cap;
+			pointer		tmp_begin2 = _begin;
+
+			difference_type new_cap = (this->capacity() * 2 <= _n) ? _n : (this->capacity() * 2); 
+			_begin = _a.allocate(new_cap);
+			_end_cap = _begin + new_cap;
+			_end = _begin;
+			while (tmp_begin != tmp_end)
+			{
+				_a.construct(_end, *tmp_begin);
+				_end++;
+				tmp_begin++;
+			}
+			pointer new_end = _begin + _n;
+			while (_end != new_end)
+			{
+				_a.construct(_end, _x);
+				_end++;
+			}
+			_a.deallocate(tmp_begin2, tmp_end_cap - tmp_begin2);
 		}
 	}
 
@@ -673,6 +731,48 @@ class vector {
 
    }; //end vector class
 
+template <class _Tp, class _Allocator>
+bool
+operator==(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+    const typename vector<_Tp, _Allocator>::size_type __sz = __x.size();
+    return __sz == __y.size() && _VSTD::equal(__x.begin(), __x.end(), __y.begin());
+}
+
+	template <class _Tp, class _Allocator>
+	bool
+	operator!=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+	{
+		return !(__x == __y);
+	}
+
+	template <class _Tp, class _Allocator>
+	bool
+	operator< (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+	{
+		return _VSTD::lexicographical_compare(__x.begin(), __x.end(), __y.begin(), __y.end());
+	}
+
+	template <class _Tp, class _Allocator>
+	bool
+	operator> (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+	{
+		return __y < __x;
+	}
+
+	template <class _Tp, class _Allocator>
+	bool
+	operator>=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+	{
+		return !(__x < __y);
+	}
+
+	template <class _Tp, class _Allocator>
+	bool
+	operator<=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+	{
+		return !(__y < __x);
+	}
 
 };
 
