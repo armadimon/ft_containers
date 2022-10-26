@@ -1,23 +1,109 @@
-In file included from ../vector_tests/operator >=.cpp:2:
-../vector_tests/__service.ipp:3:10: warning: non-portable path to file '"../../../vector.hpp"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
-#include VECTOR
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:3:10: error: expected "FILENAME" or <FILENAME>
+#include MAP
          ^
-../vector_tests/../system/../../config.hpp:8:18: note: expanded from macro 'VECTOR'
-#define VECTOR                  "../../../Vector.hpp"
-                                ^
-1 warning generated.
-ed.
-ated.
-pp:22:1: warning: non-void function does not return a value [-Wreturn-type]
-}
-^
-../vector_tests/insert(fill).cpp:45:52: note: in instantiation of function template specialization 'insert_test_2<int>' requested here
-    exit(run_vector_unit_test<int>("insert(fill)", insert_test_2, insert_test_2));
-                                                   ^
-../vector_tests/insert(fill).cpp:41:1: warning: non-void function does not return a value [-Wreturn-type]
-}
-^
-../vector_tests/insert(fill).cpp:45:67: note: in instantiation of function template specialization 'insert_test_2<int>' requested here
-    exit(run_vector_unit_test<int>("insert(fill)", insert_test_2, insert_test_2));
-                                                                  ^
-3 warnings generated.
+../map_tests/__service.ipp:19:14: error: use of undeclared identifier 'ft'
+void fillMap(_map<T, V, C> &mp) {
+             ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::map
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:20:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(16, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:21:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(8, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:22:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(23, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:23:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(7, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:24:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(19, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:25:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(29, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:26:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(41, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:27:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(4, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:28:12: error: use of undeclared identifier 'ft'
+        mp.insert(_make_pair(11, 3));
+                  ^
+../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
+#define _make_pair                      ft::make_pair
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:35:2: error: use of undeclared identifier 'ft'
+        _map<int, int> mp1, mp2, mp3, mp4;
+        ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::map
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:36:2: error: use of undeclared identifier 'ft'
+        _map<string, string> mp5, mp6, mp7, mp8, mp9;
+        ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::map
+                                        ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:39:47: error: use of undeclared identifier 'ft'
+                m1.insert(std::make_pair(2, 3)); mp1.insert(ft::make_pair(2, 3));
+                                                            ^
+../map_tests/__service.ipp:40:47: error: use of undeclared identifier 'ft'
+                m2.insert(std::make_pair(3, 3)); mp2.insert(ft::make_pair(3, 3));
+                                                            ^
+../map_tests/__service.ipp:41:47: error: use of undeclared identifier 'ft'
+                m3.insert(std::make_pair(3, 4)); mp3.insert(ft::make_pair(3, 4));
+                                                            ^
+../map_tests/__service.ipp:42:47: error: use of undeclared identifier 'ft'
+                m4.insert(std::make_pair(4, 4)); mp4.insert(ft::make_pair(4, 4));
+                                                            ^
+../map_tests/__service.ipp:43:47: error: use of undeclared identifier 'ft'
+                m4.insert(std::make_pair(4, 5)); mp4.insert(ft::make_pair(4, 5));
+                                                            ^
+../map_tests/__service.ipp:44:55: error: use of undeclared identifier 'ft'
+                m5.insert(std::make_pair("123", "123")); mp5.insert(ft::make_pair("123", "123"));
+                                                                    ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+s generated.

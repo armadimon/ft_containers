@@ -22,6 +22,7 @@ class vector_iterator {
 
 	public:
 		vector_iterator() NOEXCEPT {}
+
 		vector_iterator(iterator_type _x) NOEXCEPT : _i(_x) {}
 
 		template <typename _Up>
@@ -333,7 +334,7 @@ class vector {
         {return static_cast<size_type>(this->_end_cap - this->_begin);}
 	
 	size_type max_size() const {
-    	return std::min(
+    	return min(
 		this->_a.max_size(),
         static_cast<size_type>(std::numeric_limits<difference_type>::max()));}
 
@@ -735,44 +736,44 @@ template <class _Tp, class _Allocator>
 bool
 operator==(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
 {
-    const typename vector<_Tp, _Allocator>::size_type __sz = __x.size();
-    return __sz == __y.size() && _VSTD::equal(__x.begin(), __x.end(), __y.begin());
+	const typename vector<_Tp, _Allocator>::size_type __sz = __x.size();
+	return __sz == __y.size() && ft::equal(__x.begin(), __x.end(), __y.begin());
 }
 
-	template <class _Tp, class _Allocator>
-	bool
-	operator!=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
-	{
-		return !(__x == __y);
-	}
+template <class _Tp, class _Allocator>
+bool
+operator!=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+	return !(__x == __y);
+}
 
-	template <class _Tp, class _Allocator>
-	bool
-	operator< (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
-	{
-		return _VSTD::lexicographical_compare(__x.begin(), __x.end(), __y.begin(), __y.end());
-	}
+template <class _Tp, class _Allocator>
+bool
+operator< (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+	return ft::lexicographical_compare(__x.begin(), __x.end(), __y.begin(), __y.end());
+}
 
-	template <class _Tp, class _Allocator>
-	bool
-	operator> (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
-	{
-		return __y < __x;
-	}
+template <class _Tp, class _Allocator>
+bool
+operator> (const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+	return __y < __x;
+}
 
-	template <class _Tp, class _Allocator>
-	bool
-	operator>=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
-	{
-		return !(__x < __y);
-	}
+template <class _Tp, class _Allocator>
+bool
+operator>=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+	return !(__x < __y);
+}
 
-	template <class _Tp, class _Allocator>
-	bool
-	operator<=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
-	{
-		return !(__y < __x);
-	}
+template <class _Tp, class _Allocator>
+bool
+operator<=(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y)
+{
+	return !(__y < __x);
+}
 
 };
 

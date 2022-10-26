@@ -98,6 +98,11 @@ namespace ft {
         }
         return (first1 == last1) && (first2 != last2);
     }
+
+    template <typename T>
+    const T& min(const T& x, const T& y) {
+        return (x < y) ? x : y;
+}
 };
 
 
