@@ -1,109 +1,207 @@
 In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:3:10: error: expected "FILENAME" or <FILENAME>
-#include MAP
-         ^
-../map_tests/__service.ipp:19:14: error: use of undeclared identifier 'ft'
-void fillMap(_map<T, V, C> &mp) {
-             ^
-../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
-#define _map                            ft::map
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:20:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(16, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:21:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(8, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:22:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(23, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:23:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(7, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:24:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(19, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:25:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(29, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:26:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(41, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:27:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(4, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:28:12: error: use of undeclared identifier 'ft'
-        mp.insert(_make_pair(11, 3));
-                  ^
-../map_tests/../system/../../config.hpp:27:23: note: expanded from macro '_make_pair'
-#define _make_pair                      ft::make_pair
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:35:2: error: use of undeclared identifier 'ft'
-        _map<int, int> mp1, mp2, mp3, mp4;
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:308:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+      else
+      ^
+../map_tests/../../../_tree.hpp:314:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+      else                      // __x == __z->_M_left
+      ^
+../map_tests/../../../_tree.hpp:399:12: error: no template named '_Alloc_traits'
+  typename _Alloc_traits<_Rb_tree_node<_Tp>, _Alloc>::allocator_type
+           ^
+../map_tests/../../../_tree.hpp:399:55: error: expected a qualified name after 'typename'
+  typename _Alloc_traits<_Rb_tree_node<_Tp>, _Alloc>::allocator_type
+                                                      ^
+../map_tests/../../../_tree.hpp:417:20: error: use of undeclared identifier '_M_header'
+    : _Base(__a) { _M_header = _M_get_node(); }
+                   ^
+../map_tests/../../../_tree.hpp:417:32: error: use of undeclared identifier '_M_get_node'
+    : _Base(__a) { _M_header = _M_get_node(); }
+                               ^
+../map_tests/../../../_tree.hpp:418:34: error: use of undeclared identifier '_M_header'
+  ~_Rb_tree_base() { _M_put_node(_M_header); }
+                                 ^
+../map_tests/../../../_tree.hpp:462:2: error: use of undeclared identifier '__throw_exception_again'
+        __throw_exception_again; 
         ^
-../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
-#define _map                            ft::map
-                                        ^
+../map_tests/../../../_tree.hpp:810:5: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+    else
+    ^
+../map_tests/../../../_tree.hpp:954:7: error: use of undeclared identifier '__throw_exception_again'
+      __throw_exception_again; 
+      ^
 In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:36:2: error: use of undeclared identifier 'ft'
-        _map<string, string> mp5, mp6, mp7, mp8, mp9;
-        ^
-../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
-#define _map                            ft::map
-                                        ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:39:47: error: use of undeclared identifier 'ft'
+../map_tests/__service.ipp:39:40: error: no matching member function for call to 'insert'
                 m1.insert(std::make_pair(2, 3)); mp1.insert(ft::make_pair(2, 3));
-                                                            ^
-../map_tests/__service.ipp:40:47: error: use of undeclared identifier 'ft'
+                                                 ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:40:40: error: no matching member function for call to 'insert'
                 m2.insert(std::make_pair(3, 3)); mp2.insert(ft::make_pair(3, 3));
-                                                            ^
-../map_tests/__service.ipp:41:47: error: use of undeclared identifier 'ft'
+                                                 ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:41:40: error: no matching member function for call to 'insert'
                 m3.insert(std::make_pair(3, 4)); mp3.insert(ft::make_pair(3, 4));
-                                                            ^
-../map_tests/__service.ipp:42:47: error: use of undeclared identifier 'ft'
+                                                 ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:42:40: error: no matching member function for call to 'insert'
                 m4.insert(std::make_pair(4, 4)); mp4.insert(ft::make_pair(4, 4));
-                                                            ^
-../map_tests/__service.ipp:43:47: error: use of undeclared identifier 'ft'
+                                                 ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:43:40: error: no matching member function for call to 'insert'
                 m4.insert(std::make_pair(4, 5)); mp4.insert(ft::make_pair(4, 5));
-                                                            ^
-../map_tests/__service.ipp:44:55: error: use of undeclared identifier 'ft'
+                                                 ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:44:48: error: no matching member function for call to 'insert'
                 m5.insert(std::make_pair("123", "123")); mp5.insert(ft::make_pair("123", "123"));
-                                                                    ^
+                                                         ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:45:48: error: no matching member function for call to 'insert'
+                m6.insert(std::make_pair("123", "124")); mp6.insert(ft::make_pair("123", "124"));
+                                                         ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:46:48: error: no matching member function for call to 'insert'
+                m7.insert(std::make_pair("124", "123")); mp7.insert(ft::make_pair("124", "123"));
+                                                         ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:47:47: error: no matching member function for call to 'insert'
+                m8.insert(std::make_pair("12", "123")); mp8.insert(ft::make_pair("12", "123"));
+                                                        ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/__service.ipp:48:47: error: no matching member function for call to 'insert'
+                m9.insert(std::make_pair("123", "12")); mp9.insert(ft::make_pair("123", "12"));
+                                                        ~~~~^~~~~~
+../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
+  pair<iterator,bool> insert(const value_type& __x) 
+                      ^
+../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+  void insert(_InputIterator __first, _InputIterator __last) {
+       ^
+../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
+  iterator insert(iterator position, const value_type& __x)
+           ^
+In file included from ../map_tests/assign overload.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:5: error: use of undeclared identifier '_Destroy'
+    _Destroy(&__p->_M_value_field);
+    ^
+../map_tests/../../../_tree.hpp:968:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+In file included from ../map_tests/assign overload.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:406:36: error: cannot initialize a parameter of type 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') with an lvalue of type '_Rb_tree_node<ft::pair<const int, int> > *'
+    { _M_node_allocator.deallocate(__p, 1); }
+                                   ^~~
+../map_tests/../../../_tree.hpp:480:5: note: in instantiation of member function 'ft::_Rb_tree_alloc_base<ft::pair<const int, int>, std::__1::allocator<ft::pair<const int, int> > >::_M_put_node' requested here
+    _M_put_node(__p);
+    ^
+../map_tests/../../../_tree.hpp:968:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1871:55: note: passing argument to parameter '__p' here
+    _LIBCPP_INLINE_VISIBILITY void deallocate(pointer __p, size_type __n) _NOEXCEPT
+                                                      ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-s generated.
+3 warnings and 20 errors generated.

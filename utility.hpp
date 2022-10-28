@@ -47,6 +47,26 @@ namespace ft {
     template <>          struct is_integral<unsigned long long> : public true_type {};
     template <>          struct is_integral<char16_t>           : public true_type {};
 
+    template <typename _T1, typename _T2>
+    struct pair
+    {
+        typedef _T1 first_type;
+        typedef _T2 second_type;
+
+        _T1 first;
+        _T2 second;
+
+        pair(pair const&) {}
+        explicit pair(_T1 const& __t1, _T2 const& __t2) : first(__t1), second(__t2) {}
+    };
+    
+
+    template <class T1,class T2>
+    pair<T1,T2> make_pair (T1 x, T2 y)
+    {
+        return ( pair<T1,T2>(x,y) );
+    }
+
     template<class InputIt1, class InputIt2>
     bool equal(InputIt1 first1, InputIt1 last1, 
             InputIt2 first2)
@@ -103,7 +123,29 @@ namespace ft {
     const T& min(const T& x, const T& y) {
         return (x < y) ? x : y;
 }
-};
+template <class _Arg, class _Result>
+     struct unary_function
+     {
+       typedef _Arg argument_type;   
+ 
+ 
+       typedef _Result result_type;  
+     };
+ 
 
+template <class _Pair>
+     struct _Select1st : unary_function<_Pair,
+                           typename _Pair::first_type>
+     {
+       typename _Pair::first_type&
+       operator()(_Pair& __x) const
+       { return __x.first; }
+ 
+       const typename _Pair::first_type&
+       operator()(const _Pair& __x) const
+       { return __x.first; }
+     };
+
+};
 
 #endif

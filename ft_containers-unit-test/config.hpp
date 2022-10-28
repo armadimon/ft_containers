@@ -7,7 +7,7 @@
 /**************************************************/
 #define VECTOR			"../../../vector.hpp"
 #define STACK			"../../../stack.hpp"
-// #define MAP			  	"../../../map.hpp"
+#define MAP			  	"../../../map.hpp"
 // #define SET			  	"../../../set.hpp"
 #define UTILITIES		"../../../utility.hpp"
 

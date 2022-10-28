@@ -301,18 +301,22 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* __z,
         __z->_M_parent->_M_left = __x;
       else
         __z->_M_parent->_M_right = __x;
-    if (__leftmost == __z) 
+    if (__leftmost == __z)
+    {
       if (__z->_M_right == 0)        // __z->_M_left must be null also
         __leftmost = __z->_M_parent;
-    // makes __leftmost == _M_header if __z == __root
       else
+      {
         __leftmost = _Rb_tree_node_base::_S_minimum(__x);
-    if (__rightmost == __z)  
+      }
+    }
+    if (__rightmost == __z)
+    {  
       if (__z->_M_left == 0)         // __z->_M_right must be null also
         __rightmost = __z->_M_parent;  
-    // makes __rightmost == _M_header if __z == __root
       else                      // __x == __z->_M_left
         __rightmost = _Rb_tree_node_base::_S_maximum(__x);
+    }
   }
   if (__y->_M_color != _S_rb_tree_red) { 
     while (__x != __root && (__x == 0 || __x->_M_color == _S_rb_tree_black))
@@ -384,19 +388,18 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* __z,
 // allocators and standard-conforming allocators.  In order to avoid
 // having an empty base class, we arbitrarily move one of rb_tree's
 // data members into the base class.
-
 // _Base for general standard-conforming allocators.
-template <class _Tp, class _Alloc = std::allocator<_Tp> >
+template <class _Tp, class _Alloc>
 class _Rb_tree_alloc_base {
 public:
-  typedef _Alloc allocator_type;
+  typedef typename std::allocator_traits<_Tp>::allocator_type allocator_type;
   allocator_type get_allocator() const { return _M_node_allocator; }
 
   _Rb_tree_alloc_base(const allocator_type& __a)
     : _M_node_allocator(__a), _M_header(0) {}
 
 protected:
-  typename _Alloc_traits<_Rb_tree_node<_Tp>, _Alloc>::allocator_type
+  typename std::allocator_traits<_Rb_tree_node<_Tp> >::allocator_type
            _M_node_allocator;
   _Rb_tree_node<_Tp>* _M_header;
 
@@ -406,22 +409,8 @@ protected:
     { _M_node_allocator.deallocate(__p, 1); }
 };
 
-template <class _Tp, class _Alloc>
-struct _Rb_tree_base
-  : public _Rb_tree_alloc_base<_Tp, _Alloc>
-{
-  typedef _Rb_tree_alloc_base<_Tp, _Alloc> _Base;
-  typedef typename _Base::allocator_type allocator_type;
-
-  _Rb_tree_base(const allocator_type& __a) 
-    : _Base(__a) { _M_header = _M_get_node(); }
-  ~_Rb_tree_base() { _M_put_node(_M_header); }
-
-};
-
-
 template <class _Key, class _Value, class _KeyOfValue, class _Compare,
-          class _Alloc = allocator<_Value> >
+          class _Alloc = std::allocator<_Value> >
 class _Rb_tree : protected _Rb_tree_base<_Value, _Alloc> {
   typedef _Rb_tree_base<_Value, _Alloc> _Base;
 protected:
@@ -459,7 +448,6 @@ protected:
     catch(...)
       {
 	_M_put_node(__tmp);
-	__throw_exception_again; 
       }
     return __tmp;
   }
@@ -951,7 +939,6 @@ _Rb_tree<_Key,_Val,_KoV,_Compare,_Alloc>
   catch(...)
     {
       _M_erase(__top);
-      __throw_exception_again; 
     }
   return __top;
 }
