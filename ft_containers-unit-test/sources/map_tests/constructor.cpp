@@ -17,6 +17,12 @@ std::vector<int> copy_constructor_test(std::map<T, V> mp) {
         v.push_back(it->first);
         v.push_back(it->second);
     }
+    //     std::vector<int>::iterator it1 = v.begin();
+    // while (it1 != v.end())
+    // {
+    //     std::cout << "std: " << *it1 << std::endl;
+    //     it1++;
+    // }
     return v;
 }
 
@@ -36,6 +42,12 @@ std::vector<int> copy_constructor_test(_map<T, V> mp) {
         v.push_back(it->first);
         v.push_back(it->second);
     }
+    // std::vector<int>::iterator it1 = v.begin();
+    // while (it1 != v.end())
+    // {
+    //     std::cout << "ft: " << *it1 << std::endl;
+    //     it1++;
+    // }
     return v;
 }
 

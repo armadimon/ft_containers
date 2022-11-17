@@ -14,11 +14,11 @@ class map
 
 public:
   // typedefs:
-  typedef _Key                 key_type;
+  typedef _Key                  key_type;
   typedef _Tp                   data_type;
   typedef _Tp                   mapped_type;
-  typedef pair<const _Key, _Tp> value_type;
-  typedef _Compare             key_compare;
+  typedef pair<_Key, _Tp>       value_type;
+  typedef _Compare              key_compare;
     
   class value_compare
     : public std::binary_function<value_type, value_type, bool> {
@@ -52,8 +52,8 @@ public:
   // allocation/deallocation
 
   map() : _M_t(_Compare(), allocator_type()) {}
-  explicit map(const _Compare& __comp,
-               const allocator_type& __a = allocator_type())
+  explicit map(_Compare& __comp,
+              allocator_type& __a = allocator_type())
     : _M_t(__comp, __a) {}
 
   template <class _InputIterator>
@@ -62,10 +62,10 @@ public:
     { _M_t.insert_unique(__first, __last); }
 
   template <class _InputIterator>
-  map(_InputIterator __first, _InputIterator __last, const _Compare& __comp,
-      const allocator_type& __a = allocator_type())
+  map(_InputIterator __first, _InputIterator __last, _Compare& __comp,
+       allocator_type& __a = allocator_type())
     : _M_t(__comp, __a) { _M_t.insert_unique(__first, __last); }
-  map(const map<_Key,_Tp,_Compare,_Alloc>& __x) : _M_t(__x._M_t) {}
+  map( map<_Key,_Tp,_Compare,_Alloc>& __x) : _M_t(__x._M_t) {}
 
   map<_Key,_Tp,_Compare,_Alloc>&
   operator=(const map<_Key, _Tp, _Compare, _Alloc>& __x)
@@ -161,8 +161,13 @@ inline bool operator<(const map<_Key,_Tp,_Compare,_Alloc>& __x,
 }
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
-inline bool operator!=(const map<_Key,_Tp,_Compare,_Alloc>& __x, 
-                       const map<_Key,_Tp,_Compare,_Alloc>& __y) {
+inline bool operator!=(const ft::map<_Key,_Tp,_Compare,_Alloc>& __x, 
+                       const ft::map<_Key,_Tp,_Compare,_Alloc>& __y) {
+  // std::cout << "x f" << __x.begin()->first << std::endl;
+  // std::cout << "x s" << __x.begin()->second << std::endl;
+  // std::cout << "y f" << __y.begin()->first << std::endl;
+  // std::cout << "y s" << __y.begin()->second << std::endl;
+  // std::cout << __x == __y << std::endl;
   return !(__x == __y);
 }
 

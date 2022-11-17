@@ -1,207 +1,677 @@
-In file included from ../map_tests/assign overload.cpp:2:
+In file included from ../map_tests/upper_bound().cpp:2:
 In file included from ../map_tests/__service.ipp:3:
 In file included from ../map_tests/../../../map.hpp:5:
-../map_tests/../../../_tree.hpp:308:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
-      else
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
       ^
-../map_tests/../../../_tree.hpp:314:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
-      else                      // __x == __z->_M_left
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
       ^
-../map_tests/../../../_tree.hpp:399:12: error: no template named '_Alloc_traits'
-  typename _Alloc_traits<_Rb_tree_node<_Tp>, _Alloc>::allocator_type
-           ^
-../map_tests/../../../_tree.hpp:399:55: error: expected a qualified name after 'typename'
-  typename _Alloc_traits<_Rb_tree_node<_Tp>, _Alloc>::allocator_type
-                                                      ^
-../map_tests/../../../_tree.hpp:417:20: error: use of undeclared identifier '_M_header'
-    : _Base(__a) { _M_header = _M_get_node(); }
-                   ^
-../map_tests/../../../_tree.hpp:417:32: error: use of undeclared identifier '_M_get_node'
-    : _Base(__a) { _M_header = _M_get_node(); }
-                               ^
-../map_tests/../../../_tree.hpp:418:34: error: use of undeclared identifier '_M_header'
-  ~_Rb_tree_base() { _M_put_node(_M_header); }
-                                 ^
-../map_tests/../../../_tree.hpp:462:2: error: use of undeclared identifier '__throw_exception_again'
-        __throw_exception_again; 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
         ^
-../map_tests/../../../_tree.hpp:810:5: warning: add explicit braces to avoid dangling else [-Wdangling-else]
-    else
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/upper_bound().cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::destroy_node' requested here
+    destroy_node(__x);
     ^
-../map_tests/../../../_tree.hpp:954:7: error: use of undeclared identifier '__throw_exception_again'
-      __throw_exception_again; 
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::_M_erase' requested here
+      _M_erase(_M_root());
       ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:39:40: error: no matching member function for call to 'insert'
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::~_Rb_tree' requested here
+class map
+      ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > *' to 'std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > >::pointer' (aka 'ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/upper_bound().cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:39:40: note: in instantiation of member function 'ft::map<int, int, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
                 m1.insert(std::make_pair(2, 3)); mp1.insert(ft::make_pair(2, 3));
-                                                 ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:40:40: error: no matching member function for call to 'insert'
-                m2.insert(std::make_pair(3, 3)); mp2.insert(ft::make_pair(3, 3));
-                                                 ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:41:40: error: no matching member function for call to 'insert'
-                m3.insert(std::make_pair(3, 4)); mp3.insert(ft::make_pair(3, 4));
-                                                 ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:42:40: error: no matching member function for call to 'insert'
-                m4.insert(std::make_pair(4, 4)); mp4.insert(ft::make_pair(4, 4));
-                                                 ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:43:40: error: no matching member function for call to 'insert'
-                m4.insert(std::make_pair(4, 5)); mp4.insert(ft::make_pair(4, 5));
-                                                 ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<int, [...]>' to 'const pair<const int, [...]>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:44:48: error: no matching member function for call to 'insert'
+                                                     ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/upper_bound().cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<std::__1::basic_string<char>, ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, ft::_Select1st<ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > >, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:44:48: note: in instantiation of member function 'ft::map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > > >::insert' requested here
                 m5.insert(std::make_pair("123", "123")); mp5.insert(ft::make_pair("123", "123"));
-                                                         ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:45:48: error: no matching member function for call to 'insert'
-                m6.insert(std::make_pair("123", "124")); mp6.insert(ft::make_pair("123", "124"));
-                                                         ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:46:48: error: no matching member function for call to 'insert'
-                m7.insert(std::make_pair("124", "123")); mp7.insert(ft::make_pair("124", "123"));
-                                                         ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:47:47: error: no matching member function for call to 'insert'
-                m8.insert(std::make_pair("12", "123")); mp8.insert(ft::make_pair("12", "123"));
-                                                        ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
-../map_tests/__service.ipp:48:47: error: no matching member function for call to 'insert'
-                m9.insert(std::make_pair("123", "12")); mp9.insert(ft::make_pair("123", "12"));
-                                                        ~~~~^~~~~~
-../map_tests/../../../map.hpp:105:23: note: candidate function not viable: no known conversion from 'pair<const char *, const char *>' to 'const pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>' for 1st argument
-  pair<iterator,bool> insert(const value_type& __x) 
-                      ^
-../map_tests/../../../map.hpp:110:8: note: candidate function template not viable: requires 2 arguments, but 1 was provided
-  void insert(_InputIterator __first, _InputIterator __last) {
-       ^
-../map_tests/../../../map.hpp:107:12: note: candidate function not viable: requires 2 arguments, but 1 was provided
-  iterator insert(iterator position, const value_type& __x)
-           ^
-In file included from ../map_tests/assign overload.cpp:2:
+                                                             ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > *' to 'std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > >::pointer' (aka 'ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > *' to 'std::__1::allocator<ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > >::pointer' (aka 'ft::pair<const std::__1::basic_string<char>, std::__1::basic_string<char> > *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/upper_bound().cpp:2:
 In file included from ../map_tests/__service.ipp:3:
 In file included from ../map_tests/../../../map.hpp:5:
-../map_tests/../../../_tree.hpp:479:5: error: use of undeclared identifier '_Destroy'
-    _Destroy(&__p->_M_value_field);
-    ^
-../map_tests/../../../_tree.hpp:968:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
     destroy_node(__x);
     ^
-../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
       _M_erase(_M_root());
       ^
-../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
   ~_Rb_tree() { clear(); }
                 ^
-../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
 class map
       ^
-In file included from ../map_tests/assign overload.cpp:2:
+../map_tests/upper_bound().cpp:92:73: note: in instantiation of function template specialization 'upper_bound_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("upper_bound()", upper_bound_test, upper_bound_test));
+                                                                        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/upper_bound().cpp:2:
 In file included from ../map_tests/__service.ipp:3:
 In file included from ../map_tests/../../../map.hpp:5:
-../map_tests/../../../_tree.hpp:406:36: error: cannot initialize a parameter of type 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') with an lvalue of type '_Rb_tree_node<ft::pair<const int, int> > *'
-    { _M_node_allocator.deallocate(__p, 1); }
-                                   ^~~
-../map_tests/../../../_tree.hpp:480:5: note: in instantiation of member function 'ft::_Rb_tree_alloc_base<ft::pair<const int, int>, std::__1::allocator<ft::pair<const int, int> > >::_M_put_node' requested here
-    _M_put_node(__p);
-    ^
-../map_tests/../../../_tree.hpp:968:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/upper_bound().cpp:52:9: note: in instantiation of member function 'ft::map<int, int, std::__1::greater<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+    mp2.insert(_make_pair(10, 10));
+        ^
+../map_tests/upper_bound().cpp:92:73: note: in instantiation of function template specialization 'upper_bound_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("upper_bound()", upper_bound_test, upper_bound_test));
+                                                                        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+6 errors generated.
+_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
     destroy_node(__x);
     ^
-../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
       _M_erase(_M_root());
       ^
-../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
   ~_Rb_tree() { clear(); }
                 ^
-../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<const int, int>, ft::_Select1st<ft::pair<const int, int> >, std::__1::less<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
 class map
       ^
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1871:55: note: passing argument to parameter '__p' here
-    _LIBCPP_INLINE_VISIBILITY void deallocate(pointer __p, size_type __n) _NOEXCEPT
-                                                      ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-3 warnings and 20 errors generated.
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:20:5: note: in instantiation of member function 'ft::map<int, int, std::__1::plus<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+        mp.insert(_make_pair(16, 3));
+           ^
+../map_tests/compare class.cpp:74:5: note: in instantiation of function template specialization 'fillMap<int, int, std::__1::plus<int> >' requested here
+    fillMap(mp3);
+    ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:20:5: note: in instantiation of member function 'ft::map<int, int, std::__1::minus<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+        mp.insert(_make_pair(16, 3));
+           ^
+../map_tests/compare class.cpp:78:5: note: in instantiation of function template specialization 'fillMap<int, int, std::__1::minus<int> >' requested here
+    fillMap(mp4);
+    ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:20:5: note: in instantiation of member function 'ft::map<int, int, std::__1::greater_equal<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+        mp.insert(_make_pair(16, 3));
+           ^
+../map_tests/compare class.cpp:82:5: note: in instantiation of function template specialization 'fillMap<int, int, std::__1::greater_equal<int> >' requested here
+    fillMap(mp5);
+    ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:20:5: note: in instantiation of member function 'ft::map<int, int, std::__1::multiplies<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+        mp.insert(_make_pair(16, 3));
+           ^
+../map_tests/compare class.cpp:86:5: note: in instantiation of function template specialization 'fillMap<int, int, std::__1::multiplies<int> >' requested here
+    fillMap(mp6);
+    ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:479:10: error: no matching member function for call to 'construct'
+      _a.construct(&__p->_M_value_field);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:970:5: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::destroy_node' requested here
+    destroy_node(__x);
+    ^
+../map_tests/../../../_tree.hpp:624:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_erase' requested here
+      _M_erase(_M_root());
+      ^
+../map_tests/../../../_tree.hpp:567:17: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::clear' requested here
+  ~_Rb_tree() { clear(); }
+                ^
+../map_tests/../../../map.hpp:12:7: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::~_Rb_tree' requested here
+class map
+      ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: requires 2 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 1 was provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+In file included from ../map_tests/compare class.cpp:2:
+In file included from ../map_tests/__service.ipp:3:
+In file included from ../map_tests/../../../map.hpp:5:
+../map_tests/../../../_tree.hpp:458:10: error: no matching member function for call to 'construct'
+      _a.construct(&__tmp->_M_value_field, __x);
+      ~~~^~~~~~~~~
+../map_tests/../../../_tree.hpp:750:11: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_create_node' requested here
+    __z = _M_create_node(__v);
+          ^
+../map_tests/../../../_tree.hpp:810:34: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::_M_insert' requested here
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+                                 ^
+../map_tests/../../../map.hpp:106:19: note: in instantiation of member function 'ft::_Rb_tree<int, ft::pair<int, int>, ft::_Select1st<ft::pair<int, int> >, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::insert_unique' requested here
+    { return _M_t.insert_unique(__x); }
+                  ^
+../map_tests/__service.ipp:20:5: note: in instantiation of member function 'ft::map<int, int, std::__1::bit_xor<int>, std::__1::allocator<ft::pair<const int, int> > >::insert' requested here
+        mp.insert(_make_pair(16, 3));
+           ^
+../map_tests/compare class.cpp:90:5: note: in instantiation of function template specialization 'fillMap<int, int, std::__1::bit_xor<int> >' requested here
+    fillMap(mp7);
+    ^
+../map_tests/compare class.cpp:106:72: note: in instantiation of function template specialization 'comparator_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("compare class", comparator_test, comparator_test));
+                                                                       ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1895:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1902:9: note: candidate function template not viable: no known conversion from 'ft::pair<int, int> *' to 'std::__1::allocator<ft::pair<const int, int> >::pointer' (aka 'ft::pair<const int, int> *') for 1st argument
+        construct(pointer __p, const _A0& __a0)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1910:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1917:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1924:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1931:9: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+        construct(pointer __p, const _A0& __a0, const _A1& __a1)
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory:1886:9: note: candidate function not viable: requires single argument '__p', but 2 arguments were provided
+        construct(pointer __p)
+        ^
+16 errors generated.

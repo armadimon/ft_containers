@@ -56,8 +56,21 @@ namespace ft {
         _T1 first;
         _T2 second;
 
-        pair(pair const&) {}
-        explicit pair(_T1 const& __t1, _T2 const& __t2) : first(__t1), second(__t2) {}
+        // pair(pair const&) {}
+        // explicit pair(_T1 const& __t1, _T2 const& __t2) : first(__t1), second(__t2) {}
+
+        pair() : first(), second() {}
+        template <typename _U1, typename _U2>
+        pair(const pair<_U1, _U2> &other)
+            : first(other.first), second(other.second) {}
+        pair(const _T1 &t1, const _T2 &t2) : first(t1), second(t2) {}
+
+        // assign operator
+        pair &operator=(pair const &other) {
+            first = other.first;
+            second = other.second;
+            return *this;
+        }
     };
     
 
@@ -78,6 +91,7 @@ namespace ft {
         }
         return true;
     }
+
     template<class InputIt1, class InputIt2, class BinaryPredicate>
     bool equal(InputIt1 first1, InputIt1 last1, 
             InputIt2 first2, BinaryPredicate p)
