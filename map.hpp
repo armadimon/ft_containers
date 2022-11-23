@@ -17,7 +17,7 @@ public:
   typedef _Key                  key_type;
   typedef _Tp                   data_type;
   typedef _Tp                   mapped_type;
-  typedef pair<_Key, _Tp>       value_type;
+  typedef pair<const _Key, _Tp> value_type;
   typedef _Compare              key_compare;
     
   class value_compare
@@ -52,20 +52,20 @@ public:
   // allocation/deallocation
 
   map() : _M_t(_Compare(), allocator_type()) {}
-  explicit map(_Compare& __comp,
-              allocator_type& __a = allocator_type())
+  explicit map(const _Compare& __comp,
+               const allocator_type& __a = allocator_type())
     : _M_t(__comp, __a) {}
 
   template <class _InputIterator>
   map(_InputIterator __first, _InputIterator __last)
     : _M_t(_Compare(), allocator_type())
-    { _M_t.insert_unique(__first, __last); }
+    { _M_t._M_insert_unique(__first, __last); }
 
   template <class _InputIterator>
-  map(_InputIterator __first, _InputIterator __last, _Compare& __comp,
-       allocator_type& __a = allocator_type())
-    : _M_t(__comp, __a) { _M_t.insert_unique(__first, __last); }
-  map( map<_Key,_Tp,_Compare,_Alloc>& __x) : _M_t(__x._M_t) {}
+  map(_InputIterator __first, _InputIterator __last, const _Compare& __comp,
+      const allocator_type& __a = allocator_type())
+    : _M_t(__comp, __a) { _M_t._M_insert_unique(__first, __last); }
+  map(const map<_Key,_Tp,_Compare,_Alloc>& __x) : _M_t(__x._M_t) {}
 
   map<_Key,_Tp,_Compare,_Alloc>&
   operator=(const map<_Key, _Tp, _Compare, _Alloc>& __x)
@@ -103,12 +103,12 @@ public:
   // insert/erase
 
   pair<iterator,bool> insert(const value_type& __x) 
-    { return _M_t.insert_unique(__x); }
+    { return _M_t._M_insert_unique(__x); }
   iterator insert(iterator position, const value_type& __x)
-    { return _M_t.insert_unique(position, __x); }
+    { return _M_t._M_insert_unique_(position, __x); }
   template <class _InputIterator>
   void insert(_InputIterator __first, _InputIterator __last) {
-    _M_t.insert_unique(__first, __last);
+    _M_t._M_insert_unique(__first, __last);
   }
 
   void erase(iterator __position) { _M_t.erase(__position); }
@@ -119,11 +119,29 @@ public:
 
   // map operations:
 
+
   iterator find(const key_type& __x) { return _M_t.find(__x); }
   const_iterator find(const key_type& __x) const { return _M_t.find(__x); }
   size_type count(const key_type& __x) const {
     return _M_t.find(__x) == _M_t.end() ? 0 : 1; 
   }
+
+  mapped_type& at(const key_type& __k) {
+    iterator __i = lower_bound(__k);
+    if (!key_comp()(__k, (*__i).first))
+      return ((*__i).second);
+    else
+      throw(std::out_of_range("map::at"));
+  }
+
+  const mapped_type& at(const key_type& __k) const {
+    const_iterator __i = lower_bound(__k);
+    if (!key_comp()(__k, (*__i).first))
+      return ((*__i).second);
+    else
+      throw(std::out_of_range("map::at"));
+  }
+
   iterator lower_bound(const key_type& __x) {return _M_t.lower_bound(__x); }
   const_iterator lower_bound(const key_type& __x) const {
     return _M_t.lower_bound(__x); 
@@ -161,13 +179,8 @@ inline bool operator<(const map<_Key,_Tp,_Compare,_Alloc>& __x,
 }
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
-inline bool operator!=(const ft::map<_Key,_Tp,_Compare,_Alloc>& __x, 
-                       const ft::map<_Key,_Tp,_Compare,_Alloc>& __y) {
-  // std::cout << "x f" << __x.begin()->first << std::endl;
-  // std::cout << "x s" << __x.begin()->second << std::endl;
-  // std::cout << "y f" << __y.begin()->first << std::endl;
-  // std::cout << "y s" << __y.begin()->second << std::endl;
-  // std::cout << __x == __y << std::endl;
+inline bool operator!=(const map<_Key,_Tp,_Compare,_Alloc>& __x, 
+                       const map<_Key,_Tp,_Compare,_Alloc>& __y) {
   return !(__x == __y);
 }
 
@@ -195,6 +208,6 @@ inline void swap(map<_Key,_Tp,_Compare,_Alloc>& __x,
   __x.swap(__y);
 }
 
-} // namespace std
+}
 
 #endif /* _CPP_BITS_STL_MAP_H */

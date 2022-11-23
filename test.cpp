@@ -9,6 +9,8 @@
 #include <iostream>
 
 #include "vector.hpp"
+#include "map.hpp"
+
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
 // struct Add{
 // 	Add(int toAdd) : _toAdd(toAdd) {} // default constructor
@@ -1068,6 +1070,74 @@ void test_ad4()
 }
 }
 
+#include <map>
+
+void test_map2()
+{
+    std::cout << "/==================== test2 ==================" << std::endl;
+    std::map<int, int> temp;
+
+    temp.insert(std::make_pair(1, 1));
+    temp.insert(std::make_pair(2, 2));
+    temp.insert(std::make_pair(3, 3));
+
+    std::pair<int, int> p1 = std::make_pair(1, 1);
+
+	std::cout << p1.first << " " << p1.second << std::endl;
+
+    std::map<int, int>::iterator it1 = temp.begin();
+    
+    for (; it1 != temp.end(); it1++)
+    {
+	    std::cout << it1->first << " " << it1->second << std::endl;
+    }
+}
+
+void test_map()
+{
+    ft::map<int, int> temp;
+
+    std::cout << "sec : " << temp.insert(ft::make_pair(1, 1)).second << std::endl;
+    std::cout << "sec : " << temp.insert(ft::make_pair(2, 2)).second << std::endl;
+     std::cout << "sec : " << temp.insert(ft::make_pair(3, 3)).second << std::endl;
+    // temp.insert(ft::make_pair(3, 3));
+
+    ft::pair<int, int> p1 = ft::make_pair(1, 1);
+
+	std::cout << p1.first << " " << p1.second << std::endl;
+
+    ft::map<int, int>::iterator it1 = temp.begin();
+
+	std::cout << it1->first << " " << it1->second << std::endl;
+
+    it1++;
+
+    std::cout << it1->first << " " << it1->second << std::endl;
+
+    it1++;
+
+    std::cout << it1->first << " " << it1->second << std::endl;
+
+    // it1++;
+}
+
+void test_pair()
+{
+    ft::pair<int, int> p1 = ft::make_pair(1, 1);
+    ft::pair<int, int> p2 = ft::make_pair(1, 1);
+    std::pair<int, int> p3 = std::make_pair(1, 1);
+    std::pair<int, int> p4 = std::make_pair(1, 1);
+
+    // std::cout << (p1 == p2) << std::endl;
+    std::map<int, int> mp;
+    mp.insert(std::make_pair(5, 5));
+    mp.insert(std::make_pair(3, 3));
+    mp.insert(std::make_pair(7, 7));
+    typename std::map<int, int>::reverse_iterator rit = mp.rbegin();
+    typename std::map<int, int>::reverse_iterator rit2 = mp.rend();
+    std::cout << (*rit == *rit2) << std::endl;
+}
+
 int main()
 {
 	// ft_test();
@@ -1077,13 +1147,15 @@ int main()
     // test_ad();
     // test_ad2();
     // test_ad3();
-    test_ad4();
+    // test_ad4();
 	// test_nomal();
 	// ft::vector<int> v1;
 	// std::vector<int> v2;
 	// begin_test(v1);
 	// begin_test(v2);
 	// test_size();
+    // test_map();
+    test_map2();
 	// system("leaks a.out");
 	return (0);
 }

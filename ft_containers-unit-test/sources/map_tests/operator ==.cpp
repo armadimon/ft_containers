@@ -26,17 +26,6 @@ bool map_equal_test() {
 	result2.push_back(mt.mp7 == mt.mp9); result2.push_back(mt.mp8 == mt.mp8); result2.push_back(mt.mp8 == mt.mp9);
 	result2.push_back(mt.mp9 == mt.mp9);
 
-	std::vector<int>::iterator it1 = result.begin();
-	std::vector<int>::iterator it2 = result2.begin();
-
-	while (it1 != result.end())
-	{
-		std::cout << "std: " << *it1 << std::endl;
-		std::cout << "ft: " << *it2 << std::endl;
-		it1++;
-		it2++;
-	}
-
 	return result == result2;
 }
 

@@ -72,12 +72,42 @@ namespace ft {
             return *this;
         }
     };
-    
 
-    template <class T1,class T2>
-    pair<T1,T2> make_pair (T1 x, T2 y)
+    template<typename _T1, typename _T2>
+    bool operator==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return (__x.first == __y.first && __x.second == __y.second);
+    }
+
+        template<typename _T1, typename _T2>
+    bool operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return !(__x == __y);
+    }
+
+        template<typename _T1, typename _T2>
+    bool operator<(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return __x.first < __y.first ||
+                (!(__y.first < __x.first) && __x.second < __y.second);
+    }
+
+    template <class _T1, class _T2>
+    bool operator>(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return __y < __x;
+    }
+
+    template <class _T1, class _T2>
+    bool operator<=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return !(__y < __x);
+    }
+
+    template <class _T1, class _T2>
+    inline bool operator>=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y) {
+        return !(__x < __y);
+    }
+
+    template <class _T1,class _T2>
+    pair<_T1, _T2> make_pair (_T1 x, _T2 y)
     {
-        return ( pair<T1,T2>(x,y) );
+        return ( pair<_T1, _T2>(x,y) );
     }
 
     template<class InputIt1, class InputIt2>
@@ -137,19 +167,9 @@ namespace ft {
     const T& min(const T& x, const T& y) {
         return (x < y) ? x : y;
 }
-template <class _Arg, class _Result>
-     struct unary_function
-     {
-       typedef _Arg argument_type;   
- 
- 
-       typedef _Result result_type;  
-     };
- 
 
 template <class _Pair>
-     struct _Select1st : unary_function<_Pair,
-                           typename _Pair::first_type>
+     struct _Select1st
      {
        typename _Pair::first_type&
        operator()(_Pair& __x) const
