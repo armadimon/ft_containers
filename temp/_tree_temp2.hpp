@@ -956,6 +956,7 @@ template<typename _Key, typename _Val, typename _KeyOfValue,
       _M_insert_unique_(const_iterator __position, const value_type& __x);
 
       iterator
+
       _M_insert_equal_(const_iterator __position, const value_type& __x);
 
       template<typename _InputIterator>

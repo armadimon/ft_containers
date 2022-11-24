@@ -58,13 +58,8 @@ std::vector<int> insert_test_3(std::vector<T> vector) {
         v.push_back(vv.size());
         v.push_back(vv.capacity());
     }
-    std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "std : " << *it << std::endl;
-		it++;
-	}
-    return v;
+
+    return (v);
 }
 
 template <typename T>
@@ -94,13 +89,7 @@ std::vector<int> insert_test_3(_vector<T> vector) {
         v.push_back(vv.size());
         v.push_back(vv.capacity());
     }
-    std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "ft : " << *it << std::endl;
-		it++;
-	}
-    return v;
+    return (v);
 }
 
 int main() {

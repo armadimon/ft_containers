@@ -34,7 +34,7 @@ public:
 
 private:
   typedef _Rb_tree<key_type, value_type, 
-                   _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
+                   ft::_Select1st<value_type>, key_compare, _Alloc> _Rep_type;
   _Rep_type _M_t;  // red-black tree representing map
 public:
   typedef typename _Rep_type::pointer pointer;
@@ -105,7 +105,7 @@ public:
   pair<iterator,bool> insert(const value_type& __x) 
     { return _M_t._M_insert_unique(__x); }
   iterator insert(iterator position, const value_type& __x)
-    { return _M_t._M_insert_unique_(position, __x); }
+    { return _M_t._M_insert_unique_hint(position, __x); }
   template <class _InputIterator>
   void insert(_InputIterator __first, _InputIterator __last) {
     _M_t._M_insert_unique(__first, __last);
@@ -158,24 +158,20 @@ public:
     return _M_t.equal_range(__x);
   }
 
-  template <class _K1, class _T1, class _C1, class _A1>
-  friend bool operator== (const map<_K1, _T1, _C1, _A1>&,
-                          const map<_K1, _T1, _C1, _A1>&);
-  template <class _K1, class _T1, class _C1, class _A1>
-  friend bool operator< (const map<_K1, _T1, _C1, _A1>&,
-                         const map<_K1, _T1, _C1, _A1>&);
 };
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
 inline bool operator==(const map<_Key,_Tp,_Compare,_Alloc>& __x, 
                        const map<_Key,_Tp,_Compare,_Alloc>& __y) {
-  return __x._M_t == __y._M_t;
+  return (__x.size() == __y.size() &&
+          ft::equal(__x.begin(), __x.end(), __y.begin()));
 }
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
 inline bool operator<(const map<_Key,_Tp,_Compare,_Alloc>& __x, 
                       const map<_Key,_Tp,_Compare,_Alloc>& __y) {
-  return __x._M_t < __y._M_t;
+  return ft::lexicographical_compare(__x.begin(), __x.end(), __y.begin(),
+                                     __y.end());
 }
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
@@ -203,8 +199,8 @@ inline bool operator>=(const map<_Key,_Tp,_Compare,_Alloc>& __x,
 }
 
 template <class _Key, class _Tp, class _Compare, class _Alloc>
-inline void swap(map<_Key,_Tp,_Compare,_Alloc>& __x, 
-                 map<_Key,_Tp,_Compare,_Alloc>& __y) {
+inline void swap(ft::map<_Key,_Tp,_Compare,_Alloc>& __x, 
+                 ft::map<_Key,_Tp,_Compare,_Alloc>& __y) {
   __x.swap(__y);
 }
 

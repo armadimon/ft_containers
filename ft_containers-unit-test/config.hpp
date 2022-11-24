@@ -8,7 +8,7 @@
 #define VECTOR			"../../../vector.hpp"
 #define STACK			"../../../stack.hpp"
 #define MAP			  	"../../../map.hpp"
-// #define SET			  	"../../../set.hpp"
+#define SET			  	"../../../set.hpp"
 #define UTILITIES		"../../../utility.hpp"
 
 /* comment this to turn OFF flags (-WWW, -std=98) */

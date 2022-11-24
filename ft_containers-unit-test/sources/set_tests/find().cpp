@@ -15,9 +15,11 @@ std::vector<int> find_test(std::set<T> st) {
     it = st.find(-34 * _ratio);
     v.push_back(*it);
 
-    it = st.find(-987654321);
+    it = st.find(987654320);
+    std::cout << *it << std::endl;
     if (it == st.end())
         v.push_back(1);
+
     return v;
 }
 
@@ -35,9 +37,11 @@ std::vector<int> find_test(_set<T> st) {
     it = st.find(-34 * _ratio);
     v.push_back(*it);
 
-    it = st.find(-987654321);
+    it = st.find(987654320);
+    std::cout << *it << std::endl;
     if (it == st.end())
         v.push_back(1);
+
     return v;
 }
 

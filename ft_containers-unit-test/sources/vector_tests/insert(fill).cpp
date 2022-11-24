@@ -18,7 +18,7 @@ std::vector<int> insert_test_2(std::vector<T> vector) {
 	// 	std::cout << "std : " << *it << std::endl;
 	// 	it++;
 	// }
-    // return v;
+    return v;
 }
 
 template <typename T>
@@ -37,7 +37,7 @@ std::vector<int> insert_test_2(_vector<T> vector) {
 	// 	std::cout << "ft : " << *it << std::endl;
 	// 	it++;
 	// }
-    // return v;
+    return v;
 }
 
 int main() {

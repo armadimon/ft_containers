@@ -163,10 +163,17 @@ namespace ft {
         return (first1 == last1) && (first2 != last2);
     }
 
-    template <typename T>
-    const T& min(const T& x, const T& y) {
+    template <typename _Tp>
+    const _Tp& min(const _Tp& x, const _Tp& y) {
         return (x < y) ? x : y;
-}
+    }
+
+    template <typename _Tp>
+    void swap(_Tp &x, _Tp &y) {
+        _Tp tmp(x);
+        x = y;
+        y = tmp;
+    }
 
 template <class _Pair>
      struct _Select1st
@@ -180,6 +187,14 @@ template <class _Pair>
        { return __x.first; }
      };
 
+    template <typename _Tp>
+    struct _Identity {
+    _Tp &operator()(_Tp &__x) const { return __x; }
+    const _Tp &operator()(const _Tp &__x) const { return __x; }
+    };
+
 };
+
+
 
 #endif

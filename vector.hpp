@@ -637,7 +637,7 @@ class vector {
 	{
 		pointer __p = this->_begin + (_position - begin());
 		this->_a.destroy(__p);
-		std::uninitialized_copy(__p + 1, this->_end--, __p);
+		std::uninitialized_copy(__p + 1, --this->_end, __p);
   		return (iterator(this->_begin + (_position - begin())));
 	}
 
@@ -652,7 +652,7 @@ class vector {
 			{
 				this->_a.destroy(__p);
 				if (__p_last != this->_end)
-					_a.construct(__p, *__p_last);
+					*__p = *__p_last;
 				__p++;
 				__p_last++;
 			}
@@ -665,10 +665,8 @@ class vector {
 
 	void	resize (size_type _n, value_type _x = value_type())
 	{
-		if (this->capacity() > _n)
-		{
-			if (this->size() < _n)
-			{
+		if (this->capacity() > _n) {
+			if (this->size() < _n) {
 				pointer	_tmp_begin = _begin;
 				pointer _new_end = _begin + _n;
 
@@ -681,17 +679,14 @@ class vector {
 					_end++;
 				}
 			}
-			else if (this->size() > _n)
-			{
+			else if (this->size() > _n) {
 				while (this->size() > _n)
 				{
 					_end--;
 					_a.destroy(_end);
 				}
 			}
-		}
-		else
-		{
+		} else {
 			pointer		tmp_begin = _begin;
 			pointer		tmp_end = _end;
 			pointer		tmp_end_cap = _end_cap;

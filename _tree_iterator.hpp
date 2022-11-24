@@ -54,8 +54,8 @@ namespace ft
 
     _Val _M_value_field;
 
-  _Val *__valptr() { return &_M_value_field; }
-  const _Val *__valptr() const { return &_M_value_field; }
+    _Val *__valptr() { return &_M_value_field; }
+    const _Val *__valptr() const { return &_M_value_field; }
   };
 
   _Rb_tree_node_base*

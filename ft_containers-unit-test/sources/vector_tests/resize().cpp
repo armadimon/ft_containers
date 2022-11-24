@@ -18,13 +18,8 @@ std::vector<int> resize_test(std::vector<T> vector) {
     v.push_back(vector.capacity());
     v.push_back(vector[65]);
     g_end1 = timer();
-    std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "std : " << *it << std::endl;
-		it++;
-	}
-    return v;
+    return (v);
+
 }
 
 template <typename T>
@@ -44,13 +39,7 @@ std::vector<int> resize_test(_vector<T> vector) {
     v.push_back(vector.capacity());
     v.push_back(vector[65]);
     g_end2 = timer();
-    std::vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		std::cout << "ft : " << *it << std::endl;
-		it++;
-	}
-    return v;
+    return (v);
 }
 
 int main() {
