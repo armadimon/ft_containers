@@ -358,94 +358,91 @@ _Rb_tree_insert_and_rebalance(const bool __insert_left,
 
     // __p의 left에 __x를 삽입
     if (__insert_left) {
-    // std::cout << "left" << std::endl;
-      __p->_M_left = __x;  // __p가 __header여도 leftmost = __x 유지
-
+      __p->_M_left = __x;
       // 트리에 노드가 하나도 없는 경우
       if (__p == &__header) {
-      // std::cout << "empty node" << std::endl;
         __header._M_parent = __x;
         __header._M_right = __x;
       } else if (__p == __header._M_left) {
         __header._M_left = __x;  // __p가 leftmost인 경우 __x가 leftmost
       }
     } else {  // __p의 right에 __x 삽입
-    // std::cout << "right" << std::endl;
       __p->_M_right = __x;
       if (__p == __header._M_right)
         __header._M_right = __x;  // __p가 rightmost인 경우 __x가 rightmost
     }
 // rebalance
-
+// 부모의 노드가 black인 경우는 reblancing하지 않는다.
   _Rb_tree_node_base*& __root = __header._M_parent;
   while (__x != __root && __x->_M_parent->_M_color == _S_red) {
-    _Rb_tree_node_base* const __xpp = __x->_M_parent->_M_parent;
-    if (__x->_M_parent == __xpp->_M_left) {
-      _Rb_tree_node_base* const __y = __xpp->_M_right;
-
-      if (__y && __y->_M_color == _S_red) {  // __x의 uncle 노드가_S_red(case 1)
-      // std::cout << "case : 1" << std::endl;
+    // 반복문을 돌며 조건을 계속 체크한다.
+    _Rb_tree_node_base* const __xgp = __x->_M_parent->_M_parent;
+    if (__x->_M_parent == __xgp->_M_left) {
+      // _x의 부모가 조부모의 좌측일경우 
+      _Rb_tree_node_base* const __y = __xgp->_M_right;
+      if (__y && __y->_M_color == _S_red) {
+        // __x의 uncle 노드가_S_red(case 1)
         __x->_M_parent->_M_color = _S_black;
         __y->_M_color = _S_black;
-        __xpp->_M_color = _S_red;
-        __x = __xpp;
+        __xgp->_M_color = _S_red;
+        __x = __xgp;
       } else {  // __x의 uncle 노드가_S_black (case 2)
-      // std::cout << "case : 2" << std::endl;
         if (__x == __x->_M_parent->_M_right) {
           __x = __x->_M_parent;
           _Rb_tree_rotate_left(__x, __root);
         }
-      // std::cout << "case : 3" << std::endl;
         __x->_M_parent->_M_color = _S_black;  // case 3
-        __xpp->_M_color = _S_red;
-        _Rb_tree_rotate_right(__xpp, __root);
+        __xgp->_M_color = _S_red;
+        _Rb_tree_rotate_right(__xgp, __root);
       }
     } else {
-      _Rb_tree_node_base *const __y = __xpp->_M_left;
-      if (__y && __y->_M_color == _S_red) {  // sym case 1
-      // std::cout << "sym case : 1" << std::endl;
+      // _x의 부모가 조부모의 우측일경우 
+      _Rb_tree_node_base *const __y = __xgp->_M_left;
+      if (__y && __y->_M_color == _S_red) {
         __x->_M_parent->_M_color = _S_black;
         __y->_M_color = _S_black;
-        __xpp->_M_color = _S_red;
-        __x = __xpp;
+        __xgp->_M_color = _S_red;
+        __x = __xgp;
       } else {
-        if (__x == __x->_M_parent->_M_left) {  // sym case 2
-      // std::cout << "sym case : 2" << std::endl;
+        if (__x == __x->_M_parent->_M_left) {
           __x = __x->_M_parent;
           _Rb_tree_rotate_right(__x, __root);
         }
-      // std::cout << "sym case : 3" << std::endl;
-        __x->_M_parent->_M_color = _S_black;  // sym case 3
-        __xpp->_M_color = _S_red;
-        _Rb_tree_rotate_left(__xpp, __root);
+        __x->_M_parent->_M_color = _S_black;
+        __xgp->_M_color = _S_red;
+        _Rb_tree_rotate_left(__xgp, __root);
       }
     }
   }
-  __root->_M_color = _S_black;
+  __root->_M_color = _S_black; // 조건 2 : root node는 항상 black이다.
 }
 
 _Rb_tree_node_base*
 _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
                 _Rb_tree_node_base& __header) throw () {
+  // 삭제를 시도할때는 왼쪽 서브트리에서 최댓값 혹은 우측 서브트리에서 최솟값을 찾아 노드의 연결을 재구성하고,
+  // 값을 복사해온 노드를 삭제하는 방식으로 진행된다. 여기서 삭제한 노드를 대체할 노드는 최대 1개의 자식 노드만 있다.
   _Rb_tree_node_base*& __root = __header._M_parent;
-  _Rb_tree_node_base* __y = __z;
+  _Rb_tree_node_base* __y = __z; //
   _Rb_tree_node_base* __x = 0;
   _Rb_tree_node_base* __x_parent = 0;
-  if (__y->_M_left == 0) {    // __z has at most one non-null child. y == z.
+  if (__y->_M_left == 0) {
+    // __z에는 최대 한명의 자식을 가지고 있음. __y == __z
     __x = __y->_M_right;      // __x might be null.
   }
   else {
-    if (__y->_M_right == 0) {  // __z has exactly one non-null child. y == z.
+    if (__y->_M_right == 0) { 
+      // __z는 정확히 하나의 non-null child만 가지고 있음 y == z.
       __x = __y->_M_left;     // __x is not null.
     }   
-    else {                   // __z has two non-null children.  Set __y to
-      __y = __y->_M_right;   //   __z's successor.  __x might be null.
+    else {                   // __z 는 두개의 자식노드 보유.
+      __y = __y->_M_right;   // __y 를__z의 successor로 설정.  __x might be null.
       while (__y->_M_left != 0)
         __y = __y->_M_left;
       __x = __y->_M_right;
     }
   }
-  if (__y != __z) {          // relink y in place of z.  y is z's successor
+  if (__y != __z) {          // 위의 과정을 통해 y는 z의 successor가 된경우
     __z->_M_left->_M_parent = __y; 
     __y->_M_left = __z->_M_left;
     if (__y != __z->_M_right) {
@@ -456,7 +453,7 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
       __z->_M_right->_M_parent = __y;
     }
     else
-      __x_parent = __y;  
+      __x_parent = __y;
     if (__root == __z)
       __root = __y;
     else if (__z->_M_parent->_M_left == __z)
@@ -464,38 +461,41 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
     else 
       __z->_M_parent->_M_right = __y;
     __y->_M_parent = __z->_M_parent;
-    std::swap(__y->_M_color, __z->_M_color);
+    ft::swap(__y->_M_color, __z->_M_color);
     __y = __z;
     // __y now points to node to be actually deleted
   }
-  else {                        // __y == __z
+  else {    // __y == __z
     __x_parent = __y->_M_parent;
-    if (__x) __x->_M_parent = __y->_M_parent;   
+    if (__x)
+      __x->_M_parent = __y->_M_parent;   
     if (__root == __z)
       __root = __x;
-    else 
+    else
+    {
       if (__z->_M_parent->_M_left == __z)
         __z->_M_parent->_M_left = __x;
       else
         __z->_M_parent->_M_right = __x;
+    }
     if (__header._M_left == __z)
     {
       if (__z->_M_right == 0)        // __z->_M_left must be null also
-        __header._M_left = __z->_M_parent;
-    // makes __header._M_left == _M_header if __z == __root
+        __header._M_left = __z->_M_parent; // makes __header._M_left == _M_header if __z == __root
       else
-      
         __header._M_left = _Rb_tree_node_base::_S_minimum(__x);
     }
     if (__header._M_right == __z)
     {
       if (__z->_M_left == 0)         // __z->_M_right must be null also
-        __header._M_right = __z->_M_parent;  
-    // makes __header._M_right == _M_header if __z == __root
+        __header._M_right = __z->_M_parent;  // makes __header._M_right == _M_header if __z == __root
       else                      // __x == __z->_M_left
         __header._M_right = _Rb_tree_node_base::_S_maximum(__x);
     }
   }
+
+  // fix
+  
   if (__y->_M_color != _S_red) { 
     while (__x != __root && (__x == 0 || __x->_M_color == _S_black))
       if (__x == __x_parent->_M_left) {
@@ -527,7 +527,7 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
           _Rb_tree_rotate_left(__x_parent, __root);
           break;
         }
-      } else {                  // same as above, with _M_right <-> _M_left.
+      } else { //  위와 동일
         _Rb_tree_node_base* __w = __x_parent->_M_left;
         if (__w->_M_color == _S_red) {
           __w->_M_color = _S_black;
@@ -557,7 +557,8 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
           break;
         }
       }
-    if (__x) __x->_M_color = _S_black;
+    if (__x)
+      __x->_M_color = _S_black;
   }
   return __y;
 }

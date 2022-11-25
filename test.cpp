@@ -1283,10 +1283,10 @@ int main()
 	// begin_test(v1);
 	// begin_test(v2);
 	// test_size();
-    // test_map();
+    test_map();
     // test_map2();
 	// system("leaks a.out");
-    test_erase_range();
+    // test_erase_range();
 	return (0);
 }
 // template <class Tp>

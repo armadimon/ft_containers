@@ -636,8 +636,10 @@ class vector {
 	iterator erase(iterator _position)
 	{
 		pointer __p = this->_begin + (_position - begin());
-		this->_a.destroy(__p);
-		std::uninitialized_copy(__p + 1, --this->_end, __p);
+		pointer __p_end = this->_end - 1;
+		std::uninitialized_copy(__p + 1, this->_end, __p);
+		_a.destroy(__p_end);
+		--this->_end;
   		return (iterator(this->_begin + (_position - begin())));
 	}
 
@@ -645,22 +647,16 @@ class vector {
 	{
 		pointer __p = this->_begin + (_first - begin());
 		pointer __p_last = this->_begin + (_last - begin());
-		pointer _old_p = __p;
+		difference_type	__range = ft::_distance(_first, _last);
 		if (_first != _last)
+			std::uninitialized_copy(__p_last, this->_end, __p);
+		while (__range--)
 		{
-			while (__p != this->_end)
-			{
-				this->_a.destroy(__p);
-				if (__p_last != this->_end)
-					*__p = *__p_last;
-				__p++;
-				__p_last++;
-			}
+			pointer __p_end = this->_end - 1;
+			_a.destroy(__p_end - 1);
+			this->_end--;
 		}
-		else
-			return (_last);
-		this->_end -= ft::_distance(_first, _last);
-		return (iterator(_old_p));
+		return (iterator(__p));
 	}
 
 	void	resize (size_type _n, value_type _x = value_type())

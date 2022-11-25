@@ -335,8 +335,8 @@ namespace ft
       _M_insert_unique_hint(const_iterator __position, const value_type& __x);
 
       template<typename _InputIterator>
-        void
-        _M_insert_unique(_InputIterator __first, _InputIterator __last);
+      void
+      _M_insert_unique(_InputIterator __first, _InputIterator __last);
 
     private:
       void
@@ -564,7 +564,7 @@ namespace ft
       bool __comp = true;
       while (__x != 0)
       {
-        // std::cout << "check 1" << std::endl;
+        // key 값을 비교하며 header부터 insert할 위치를 탐색
         __y = __x;
         __comp = _M_impl._M_key_compare(_KeyOfValue()(__v), _S_key(__x));
         __x = __comp ? _S_left(__x) : _S_right(__x);
@@ -572,10 +572,8 @@ namespace ft
       iterator __j = iterator(__y);
       if (__comp)
       {
-        // std::cout << "check 2" << std::endl;
         if (__j == begin())
-          return pair<iterator, bool>
-            (_M_insert_(__x, __y, __v), true);
+          return pair<iterator, bool>(_M_insert_(__x, __y, __v), true);
         else
           --__j;
       }
@@ -604,20 +602,16 @@ namespace ft
     {
       // First, try before...
       const_iterator __before = __position;
-      if (__position._M_node == _M_leftmost()) // begin()
-        return _M_insert_(_M_leftmost(), _M_leftmost(),
-                  __v);
+      if (__position._M_node == _M_leftmost())
+        return _M_insert_(_M_leftmost(), _M_leftmost(), __v);
       else if (_M_impl._M_key_compare(_S_key((--__before)._M_node), 
                       _KeyOfValue()(__v)))
-        {
-          if (_S_right(__before._M_node) == 0)
-        return _M_insert_(0, __before._M_node,
-                  __v);
-          else
-        return _M_insert_(__position._M_node,
-                  __position._M_node,
-                  __v);
-        }
+      {
+        if (_S_right(__before._M_node) == 0)
+          return _M_insert_(0, __before._M_node, __v);
+        else
+          return _M_insert_(__position._M_node, __position._M_node, __v);
+      }
       else
         return _M_insert_unique(__v).first;
     }
@@ -664,7 +658,7 @@ namespace ft
   _Rb_tree<_Key,_Val,_KeyOfValue,_Compare,_Alloc>
     ::_M_copy(_Const_Link_type __x, _Link_type __p)
   {
-                          // structural copy.  __x and __p must be non-null.
+    // structural copy.  __x and __p must be non-null.
     _Link_type __top = _M_clone_node(__x);
     __top->_M_parent = __p;
   
@@ -764,7 +758,7 @@ namespace ft
     _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
     equal_range(const _Key& __k)
     {
-      _Link_type __x = _M_begin(); // 처음부터 탐색
+      _Link_type __x = _M_begin(); // _M_begin() = 트리의 header 부터 탐색
       _Link_type __y = _M_end(); // _x의 parent로 쓰이는 변수
       while (__x != 0)
       {
@@ -894,7 +888,6 @@ namespace ft
         __x = __y;
       }
     }
-
 }
 
 #endif

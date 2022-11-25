@@ -35,7 +35,7 @@ public:
 private:
   typedef _Rb_tree<key_type, value_type, 
                    ft::_Select1st<value_type>, key_compare, _Alloc> _Rep_type;
-  _Rep_type _M_t;  // red-black tree representing map
+  _Rep_type _M_t;
 public:
   typedef typename _Rep_type::pointer pointer;
   typedef typename _Rep_type::const_pointer const_pointer;
