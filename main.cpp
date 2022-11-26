@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <deque>
-#if 0 //CREATE A REAL STL EXAMPLE
+#if 1 //CREATE A REAL STL EXAMPLE
 	#include <map>
 	#include <stack>
 	#include <vector>
@@ -98,6 +98,7 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < 10000; i++)
 	{
 		int access = rand();
+		// std::cout << access << std::endl;
 		sum += map_int[access];
 	}
 	std::cout << "should be constant with the same seed: " << sum << std::endl;

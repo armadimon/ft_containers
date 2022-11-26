@@ -178,7 +178,6 @@ class vector {
 	template< typename InputIt >
 	vector( InputIt first,
 	typename enable_if<is_input_iterator<InputIt>::value,
-                        // !is_forward_iterator<InputIt>::value,
                        InputIt>::type last, 
         const Allocator& _alloc = Allocator())
 		:

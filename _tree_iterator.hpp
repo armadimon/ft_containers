@@ -396,7 +396,7 @@ _Rb_tree_insert_and_rebalance(const bool __insert_left,
         _Rb_tree_rotate_right(__xgp, __root);
       }
     } else {
-      // _x의 부모가 조부모의 우측일경우 
+      // _x의 부모가 조부모의 우측일경우.
       _Rb_tree_node_base *const __y = __xgp->_M_left;
       if (__y && __y->_M_color == _S_red) {
         __x->_M_parent->_M_color = _S_black;
@@ -428,7 +428,7 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
   _Rb_tree_node_base* __x_parent = 0;
   if (__y->_M_left == 0) {
     // __z에는 최대 한명의 자식을 가지고 있음. __y == __z
-    __x = __y->_M_right;      // __x might be null.
+    __x = __y->_M_right;
   }
   else {
     if (__y->_M_right == 0) { 
@@ -436,7 +436,7 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
       __x = __y->_M_left;     // __x is not null.
     }   
     else {                   // __z 는 두개의 자식노드 보유.
-      __y = __y->_M_right;   // __y 를__z의 successor로 설정.  __x might be null.
+      __y = __y->_M_right;   // __y 를__z의 successor로 설정.
       while (__y->_M_left != 0)
         __y = __y->_M_left;
       __x = __y->_M_right;
@@ -448,7 +448,7 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
     if (__y != __z->_M_right) {
       __x_parent = __y->_M_parent;
       if (__x) __x->_M_parent = __y->_M_parent;
-      __y->_M_parent->_M_left = __x;      // __y must be a child of _M_left
+      __y->_M_parent->_M_left = __x;
       __y->_M_right = __z->_M_right;
       __z->_M_right->_M_parent = __y;
     }
@@ -480,16 +480,16 @@ _Rb_tree_rebalance_for_erase(_Rb_tree_node_base* const __z,
     }
     if (__header._M_left == __z)
     {
-      if (__z->_M_right == 0)        // __z->_M_left must be null also
-        __header._M_left = __z->_M_parent; // makes __header._M_left == _M_header if __z == __root
+      if (__z->_M_right == 0)
+        __header._M_left = __z->_M_parent;
       else
         __header._M_left = _Rb_tree_node_base::_S_minimum(__x);
     }
     if (__header._M_right == __z)
     {
-      if (__z->_M_left == 0)         // __z->_M_right must be null also
-        __header._M_right = __z->_M_parent;  // makes __header._M_right == _M_header if __z == __root
-      else                      // __x == __z->_M_left
+      if (__z->_M_left == 0)
+        __header._M_right = __z->_M_parent;
+      else
         __header._M_right = _Rb_tree_node_base::_S_maximum(__x);
     }
   }

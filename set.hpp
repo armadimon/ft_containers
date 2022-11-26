@@ -13,7 +13,6 @@ class set
 {
 
 public:
-  // typedefs:
   typedef _Key                  key_type;
   typedef _Key                  value_type;
   typedef _Compare              key_compare;
@@ -61,7 +60,7 @@ public:
     return *this; 
   }
 
-  // accessors:
+  // accessors
 
   key_compare key_comp() const { return _M_t.key_comp(); }
   value_compare value_comp() const { return value_compare(_M_t.key_comp()); }
@@ -174,4 +173,4 @@ inline void swap(ft::set<_Key, _Compare,_Alloc>& __x,
 
 }
 
-#endif /* _CPP_BITS_STL_set_H */
+#endif

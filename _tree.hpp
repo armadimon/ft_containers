@@ -89,7 +89,7 @@ namespace ft
     {
       _Key_compare          _M_key_compare;
       _Rb_tree_node_base    _M_header;
-      size_type             _M_node_count; // Keeps track of size of tree.
+      size_type             _M_node_count;
 
       _Rb_tree_impl()
       : _Node_allocator(), _M_key_compare(), _M_header(),
@@ -379,7 +379,8 @@ namespace ft
         _M_impl._M_node_count = 0;
       }
 
-      // Set operations.
+      // Set operations
+
       iterator
       find(const key_type& __k);
 
@@ -600,7 +601,6 @@ namespace ft
     else if (_M_impl._M_key_compare(_KeyOfValue()(__v),
                     _S_key(__position._M_node)))
     {
-      // First, try before...
       const_iterator __before = __position;
       if (__position._M_node == _M_leftmost())
         return _M_insert_(_M_leftmost(), _M_leftmost(), __v);
@@ -618,21 +618,17 @@ namespace ft
     else if (_M_impl._M_key_compare(_S_key(__position._M_node),
                     _KeyOfValue()(__v)))
     {
-      // ... then try after.
       const_iterator __after = __position;
       if (__position._M_node == _M_rightmost())
-        return _M_insert_(0, _M_rightmost(),
-                  __v);
+        return _M_insert_(0, _M_rightmost(), __v);
       else if (_M_impl._M_key_compare(_KeyOfValue()(__v),
                       _S_key((++__after)._M_node)))
-        {
-          if (_S_right(__position._M_node) == 0)
-        return _M_insert_(0, __position._M_node,
-                  __v);
-          else
-        return _M_insert_(__after._M_node, __after._M_node,
-                  __v);
-        }
+      {
+        if (_S_right(__position._M_node) == 0)
+          return _M_insert_(0, __position._M_node, __v);
+        else
+          return _M_insert_(__after._M_node, __after._M_node,__v);
+      }
       else
         return _M_insert_unique(__v).first;
     }
@@ -658,7 +654,6 @@ namespace ft
   _Rb_tree<_Key,_Val,_KeyOfValue,_Compare,_Alloc>
     ::_M_copy(_Const_Link_type __x, _Link_type __p)
   {
-    // structural copy.  __x and __p must be non-null.
     _Link_type __top = _M_clone_node(__x);
     __top->_M_parent = __p;
   
@@ -758,8 +753,8 @@ namespace ft
     _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
     equal_range(const _Key& __k)
     {
-      _Link_type __x = _M_begin(); // _M_begin() = 트리의 header 부터 탐색
-      _Link_type __y = _M_end(); // _x의 parent로 쓰이는 변수
+      _Link_type __x = _M_begin(); // header 부터 탐색
+      _Link_type __y = _M_end();
       while (__x != 0)
       {
         if (_M_impl._M_key_compare(_S_key(__x), __k)) // 현재 x와 인자로 들어온 __k값을 비교해 탐색
@@ -787,8 +782,8 @@ namespace ft
     _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
     equal_range(const _Key& __k) const
     {
-      _Const_Link_type __x = _M_begin(); // 처음부터 탐색
-      _Const_Link_type __y = _M_end(); // _x의 parent로 쓰이는 변수
+      _Const_Link_type __x = _M_begin(); // header 부터 탐색
+      _Const_Link_type __y = _M_end();
       while (__x != 0)
       {
         if (_M_impl._M_key_compare(_S_key(__x), __k)) // 현재 x와 인자로 들어온 __k값을 비교해 탐색
